@@ -4,6 +4,7 @@ Plug 'AndrewRadev/sideways.vim' " Move function arguments
 Plug 'airblade/vim-gitgutter' " Show git info in gutter
 Plug 'airblade/vim-rooter' " Cd into root directory of project
 Plug 'akinsho/nvim-toggleterm.lua' " Toggleable terminals
+Plug 'alaviss/nim.nvim'
 Plug 'cespare/vim-toml' " Toml support
 Plug 'https://github.com/sbdchd/neoformat' " File formatting
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview in browser
@@ -13,8 +14,11 @@ Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
 Plug 'junegunn/rainbow_parentheses.vim' " Rainbow parenthesis
 Plug 'junegunn/vim-easy-align' " Align text
 Plug 'justinmk/vim-sneak' " Like t and f but accepts two characters
-Plug 'michaeljsmith/vim-indent-object'
+Plug 'michaeljsmith/vim-indent-object' "Adds selection by indent
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'prabirshrestha/asyncomplete-buffer.vim' "Adds buffer completion
+Plug 'prabirshrestha/asyncomplete-file.vim' " Adds file and dir completion
+Plug 'prabirshrestha/asyncomplete.vim' " Async completion
 Plug 'psliwka/vim-smoothie' " Smooth C-U and C-D
 Plug 'rhysd/git-messenger.vim' " Blame current line
 Plug 'roryokane/detectindent' " Indent detection
@@ -54,6 +58,7 @@ call s:load('fzf.vim')
 call s:load('settings.vim')
 call s:load('winhl.vim')
 call s:load('kwbd.vim')
+call s:load('completion.vim')
 
 lua require "init"
 
@@ -68,7 +73,7 @@ function! AlternateFile()
 endfunction
 
 " Echoes all arguments
-function Info(...)
+function! Info(...)
     echo join(a:000, ' ')
 endfunction
 

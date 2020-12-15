@@ -54,7 +54,7 @@ local ft_commands = {
     nim = {
         build="nimble build",
         run="nimble run",
-        test="nimble test"
+        test="nimble c -r %"
     }
 }
 

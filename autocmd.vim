@@ -43,7 +43,7 @@ augroup end
 " Create directories to save file
 augroup Mkdir
     autocmd!
-    autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+    autocmd BufWritePre * if (&buftype == "") | call mkdir(expand("<afile>:p:h"), "p") | endif
 augroup end
 
 augroup Format
