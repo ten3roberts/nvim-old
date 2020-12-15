@@ -13,6 +13,7 @@ Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
 Plug 'junegunn/rainbow_parentheses.vim' " Rainbow parenthesis
 Plug 'junegunn/vim-easy-align' " Align text
 Plug 'justinmk/vim-sneak' " Like t and f but accepts two characters
+Plug 'michaeljsmith/vim-indent-object'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'psliwka/vim-smoothie' " Smooth C-U and C-D
 Plug 'rhysd/git-messenger.vim' " Blame current line
