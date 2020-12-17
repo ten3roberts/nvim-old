@@ -61,6 +61,7 @@ call s:load('winhl.vim')
 call s:load('kwbd.vim')
 call s:load('completion.vim')
 call s:load('neomake.vim')
+call s:load('bool.vim')
 
 lua require "init"
 
