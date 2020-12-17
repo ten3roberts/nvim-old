@@ -202,6 +202,12 @@ nnoremap <silent> <leader>o  :call FZFOpen(':Symbols')<CR>
 nnoremap <silent> <leader>gw :call FZFOpen(':WorkspaceSymbols')<CR>
 
 " ===============================================================================
+" Neomake
+nnoremap <silent> <leader>j :NeomakeNextLoclist<CR>
+nnoremap <silent> <leader>k :NeomakePrevLoclist<CR>
+
+
+" ===============================================================================
 " Folds, scroll
 
 " Mappings to easily toggle fold levels

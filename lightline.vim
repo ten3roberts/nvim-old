@@ -27,6 +27,18 @@ function IsBuffersModified()
     return count == 0 ? '' : ( &modified ? '[+'. (count>1?count:'') .']' : '[' . count . ']' )
 endfunction
 
+function! StatuslineLocList()
+    let counts = neomake#statusline#LoclistCounts(bufnr())
+    let status = ""
+    if has_key(counts,  'E')
+        let status .= " E: " . counts.E
+    endif
+    if has_key(counts,  'W')
+        let status .= " W: " . counts.W
+    endif
+    return status
+endfunction
+
 let g:lightline = {
             \ 'colorscheme': 'one',
             \ 'active': {
@@ -34,14 +46,15 @@ let g:lightline = {
             \             [ 'gitbranch', 'relativepath', 'modified' ] ],
             \   'right': [ [ 'lineinfo' ],
             \              [ 'percent' ],
-            \              [ 'lspstatus', 'filetype' ] ]
+            \              [ 'linter', 'filetype' ] ]
             \ },
             \ 'component_function': {
             \   'alternatefile': 'AlternateFile',
             \   'gitbranch': 'GitInfo',
             \   'readonly': 'LightLineReadonly',
             \   'modified': 'IsBuffersModified',
-            \   'fileinfo': 'FileInfo'
+            \   'fileinfo': 'FileInfo',
+            \   'linter': 'StatuslineLocList'
             \ },
             \ 'mode_map': {
             \ 'n' : 'N',

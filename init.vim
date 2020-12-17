@@ -26,6 +26,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Colorize color codes
 Plug 'schickling/vim-bufonly' " Close all but current buffer
 Plug 'tikhomirov/vim-glsl' " glsl file support
 Plug 'tmsvg/pear-tree' " Automatic addition of closing delimiters
+Plug 'neomake/neomake'
 Plug 'tpope/vim-abolish' " Smart text replacement and case coercion
 Plug 'tpope/vim-commentary' " Toggle comments
 Plug 'tpope/vim-eunuch' " Unix commands like renaming and moving current file
@@ -59,6 +60,7 @@ call s:load('settings.vim')
 call s:load('winhl.vim')
 call s:load('kwbd.vim')
 call s:load('completion.vim')
+call s:load('neomake.vim')
 
 lua require "init"
 
