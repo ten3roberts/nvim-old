@@ -19,6 +19,9 @@ augroup Filetypes
     autocmd FileType * call HighlightWindow()
     autocmd WinEnter * call HighlightWindow()
 
+
+    autocmd BufEnter * hi! link PMenu DarkenedPanel
+
     " Json comments
     autocmd FileType json syntax match Comment +\/\/.\+$+
 
@@ -50,3 +53,6 @@ augroup Format
     autocmd!
     " autocmd BufWritePost * Neoformat
 augroup end
+
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()

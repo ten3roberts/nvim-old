@@ -1,42 +1,31 @@
+" Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() . "\<cr>" : "\<cr>"
 
-imap <c-space> <Plug>(asyncomplete_force_refresh)
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
 
-" allow modifying the completeopt variable, or it will
-" be overridden all the time
-let g:asyncomplete_auto_completeopt = 1
-
-set completeopt=menuone,noinsert,noselect,preview
-" autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-
+" Avoid showing message extra message when using completion
+set shortmess+=c
 set pumheight=10
 
-" Buffer
-call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-    \ 'name': 'b',
-    \ 'allowlist': ['*'],
-    \ 'priority': 0,
-    \ 'completor': function('asyncomplete#sources#buffer#completor'),
-    \ 'config': {
-    \    'max_buffer_size': 5000000,
-    \  },
-    \ }))
+" Force open with C-tab
+imap <silent> <C-Space> <Plug>(completion_trigger)
 
-let g:asyncomplete_buffer_clear_cache = 1
+" Stop enter from selecting in menu
+let g:completion_confirm_key = "\<C-y>"
 
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'f',
-    \ 'allowlist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
+let g:completion_sorting = "none"
 
-au User asyncomplete_setup call asyncomplete#register_source({
-    \ 'name': 'nim',
-    \ 'whitelist': ['nim'],
-    \ 'priority': 20,
-    \ 'completor': {opt, ctx -> nim#suggest#sug#GetAllCandidates({start, candidates -> asyncomplete#complete(opt['name'], ctx, start, candidates)})}
-    \ })
+let g:completion_matching_strategy_list = ['exact', 'substring' ]
+
+let g:completion_matching_smart_case = 1
+
+let g:completion_timer_cycle = 200
+
+let g:completion_chain_complete_list = {
+            \ 'default': [
+            \{'complete_items': ['lsp', 'path', 'buffer']},
+            \{'mode': '<c-p>'},
+            \{'mode': '<c-n>'}
+            \]}

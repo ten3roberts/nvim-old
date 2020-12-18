@@ -27,9 +27,7 @@ function! MyOnBattery()
 endfunction
 
 if MyOnBattery()
-    echom "On  battery"
     call neomake#configure#automake('w')
 else
-    echom "Not on battery"
     call neomake#configure#automake('rnw', 1000)
 endif
