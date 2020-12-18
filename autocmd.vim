@@ -3,7 +3,7 @@ au TermEnter * if index(termFtToIgnore, &ft) < 0 | tnoremap <buffer> <Esc> <c-\>
 au TermOpen * setlocal nonumber norelativenumber
 
 " Set window title to current working directory
-autocmd DirChanged * call system('set_title "Neovim - `pwd | rev | cut -d/ -f -2 | rev`"')
+" autocmd DirChanged * call system('set_title "Neovim - `pwd | rev | cut -d/ -f -2 | rev`"')
 " autocmd DirChanged,VimEnter * call luaeval('require "project_conf".load()')
 autocmd VimLeave * call system("set_title " . g:original_window_title)
 
@@ -19,14 +19,7 @@ augroup Filetypes
     autocmd FileType * call HighlightWindow()
     autocmd WinEnter * call HighlightWindow()
 
-
     autocmd BufEnter * hi! link PMenu DarkenedPanel
-
-    " Json comments
-    autocmd FileType json syntax match Comment +\/\/.\+$+
-
-    " Lua self
-    autocmd FileType lua call timer_start(300, { tid -> execute('syntax keyword Type self') })
 
     autocmd FileType fugitive map <buffer> <Tab> =
 

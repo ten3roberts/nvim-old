@@ -12,9 +12,16 @@ set pumheight=10
 " Force open with C-tab
 imap <silent> <C-Space> <Plug>(completion_trigger)
 
-" Stop enter from selecting in menu
-let g:completion_confirm_key = "\<C-y>"
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
 
+" Stop enter from selecting in menu
+let g:completion_confirm_key = ""
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
+
+let g:completion_enable_auto_popup = 0
+let g:completion_enable_auto_paren = 1
 let g:completion_sorting = "none"
 
 let g:completion_matching_strategy_list = ['exact', 'substring' ]

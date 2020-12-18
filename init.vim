@@ -29,7 +29,7 @@ Plug 'tpope/vim-eunuch' " Unix commands like renaming and moving current file
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'tpope/vim-surround' " Surround with delimiters
 Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
-Plug 'zah/nim.vim'
+Plug 'ten3roberts/nim.vim'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -80,6 +80,15 @@ endfunction
 function! Info(...)
     echo join(a:000, ' ')
 endfunction
+
+" Show syntax highlighting groups for word under cursor
+nmap <leader>z :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
 command! Indent normal! mggg=G`g
 

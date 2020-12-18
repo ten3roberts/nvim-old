@@ -23,10 +23,11 @@ set foldtext=MyFoldText()
 
 set nofoldenable
 set foldnestmax=7
+set foldlevel=99
 set scrolloff=5
 
 " Show replace preview
-set inccommand=nosplit
+set inccommand=split
 
 set autoread
 " Switch dirty buffers
