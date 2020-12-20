@@ -6,7 +6,6 @@ Plug 'airblade/vim-rooter' " Cd into root directory of project
 Plug 'akinsho/nvim-toggleterm.lua' " Toggleable terminals
 Plug 'cespare/vim-toml' " Toml support
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview in browser
-Plug 'itchyny/lightline.vim' " Statusline
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy searching and finding
 Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
 Plug 'junegunn/rainbow_parentheses.vim' " Rainbow parenthesis
@@ -53,9 +52,15 @@ function! s:load(file)
     execute (l:file =~# '.lua$' ? 'luafile' : 'source') fnameescape(l:file)
 endfunction
 
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+colorscheme one
+
 call s:load('keymap.vim')
 call s:load('autocmd.vim')
-call s:load('lightline.vim')
+call s:load('statusline.vim')
 call s:load('fzf.vim')
 call s:load('settings.vim')
 call s:load('winhl.vim')
@@ -65,12 +70,6 @@ call s:load('completion.vim')
 call s:load('bool.vim')
 
 lua require "init"
-
-if (has("termguicolors"))
-    set termguicolors
-endif
-
-colorscheme one
 
 function! AlternateFile()
     return expand('#')
