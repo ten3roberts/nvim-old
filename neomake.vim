@@ -8,7 +8,7 @@ let g:neomake_warning_sign = {
             \   'texthl': 'NeomakeWarningSign',
             \ }
 let g:neomake_message_sign = {
-            \   'text': '_',
+            \   'text': '.',
             \   'texthl': 'NeomakeMessageSign',
             \ }
 let g:neomake_info_sign = {
