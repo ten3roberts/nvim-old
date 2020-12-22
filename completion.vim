@@ -17,10 +17,11 @@ imap <s-tab> <Plug>(completion_smart_s_tab)
 
 " Stop enter from selecting in menu
 let g:completion_confirm_key = ""
-imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
-                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
-let g:completion_enable_auto_popup = 0
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<Plug>(PearTreeExpand)" :  "\<Plug>(PearTreeExpand)"
+
+let g:completion_enable_auto_popup = 1
 let g:completion_enable_auto_paren = 1
 let g:completion_sorting = "none"
 

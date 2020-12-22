@@ -1,6 +1,6 @@
 set cmdheight=1
 " Don't show --INSERT-- and alike
-set noshowmode
+" set noshowmode
 " Smart auto indentation
 set autoindent smartindent
 
@@ -59,14 +59,15 @@ let g:pear_tree_smart_closers       = 1
 let g:pear_tree_smart_backspace     = 1
 
 " If enabled, smart pair functions timeout after 60ms:
-let g:pear_tree_timeout = 60
+let g:pear_tree_timeout = 180
 
-" Automatically map <BS>, <CR>, and <Esc>
-let g:pear_tree_map_special_keys = 1
+" Don't automatically map <BS>, <CR>, and <Esc>
+let g:pear_tree_map_special_keys = 0
 
 " Default mappings:
 imap <BS>  <Plug>(PearTreeBackspace)
-imap <CR>  <Plug>(PearTreeExpand)
+" Set by completion.vim instead
+" imap <CR>  <Plug>(PearTreeExpand)
 imap <Esc> <Plug>(PearTreeFinishExpansion)
 
 let g:rooter_patterns = [".git", "Makefile", "conf.lua", "*.nimble"]
