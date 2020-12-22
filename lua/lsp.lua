@@ -8,8 +8,74 @@ local servers = {
     hls = {}
 }
 
+local function filter_symbol(symbol)
+    local kind = symbol.kind
+    if kind == "TypeParameter" then return false end
+
+    return true
+end
+
 local map = function(type, key, value)
     vim.fn.nvim_buf_set_keymap(0, type, key, value, {noremap = true, silent = true})
+end
+
+local M = {}
+function M.get_document_symbols()
+    local opts = {}
+
+    local params = vim.lsp.util.make_position_params()
+    local results_lsp = vim.lsp.buf_request_sync(0, "textDocument/documentSymbol", params, opts.timeout or 1000)
+
+    if not results_lsp or vim.tbl_isempty(results_lsp) then
+        print("No results from textDocument/documentSymbol")
+        return
+    end
+
+    local items = {}
+    for _, server_results in pairs(results_lsp) do
+        vim.list_extend(items, vim.lsp.util.symbols_to_items(server_results.result, 0) or {})
+    end
+
+    if vim.tbl_isempty(items) then
+        return
+    end
+
+    local lines = {}
+    for _, item in pairs(items) do
+        if filter_symbol(item) then
+            lines[#lines + 1] = string.format("%d    %s", item.lnum, item.text)
+        end
+    end
+    return lines
+end
+
+function M.get_workspace_symbols()
+    local opts = {}
+
+    local params = vim.lsp.util.make_position_params()
+    local results_lsp = vim.lsp.buf_request_sync(0, "workspace/symbol", { query = '' }, opts.timeout or 1000)
+
+    if not results_lsp or vim.tbl_isempty(results_lsp) then
+        print("No results from workspace/symbol")
+        return
+    end
+
+    local items = {}
+    for _, server_results in pairs(results_lsp) do
+        vim.list_extend(items, vim.lsp.util.symbols_to_items(server_results.result, 0) or {})
+    end
+
+    if vim.tbl_isempty(items) then
+        return
+    end
+
+    local lines = {}
+    for _, item in pairs(items) do
+        if filter_symbol(item) then
+            lines[#lines + 1] = string.format("%s:%d %s", vim.fn.fnamemodify(item.filename, ":."), item.lnum, item.text)
+        end
+    end
+    return lines
 end
 
 local custom_attach = function(client)
@@ -51,3 +117,4 @@ local function setup_servers(servers)
 end
 
 setup_servers(servers)
+return M
