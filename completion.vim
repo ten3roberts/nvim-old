@@ -25,7 +25,7 @@ let g:completion_enable_auto_popup = 1
 let g:completion_enable_auto_paren = 1
 let g:completion_sorting = "none"
 
-let g:completion_matching_strategy_list = ['exact', 'substring' ]
+let g:completion_matching_strategy_list = ['exact']
 
 let g:completion_matching_smart_case = 1
 

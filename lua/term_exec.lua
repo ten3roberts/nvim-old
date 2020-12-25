@@ -37,6 +37,10 @@ function M.set(name, command)
 end
 
 local ft_commands = {
+    c = {
+        build = "build.sh",
+        run = "run.sh",
+    },
     lua = {
         build="luac %",
         run="lua %",
@@ -55,6 +59,11 @@ local ft_commands = {
         build="nimble build",
         run="nimble run",
         test="nimble c -r %"
+    },
+    python = {
+        build="python -m %",
+        run="python %",
+        test="python %"
     }
 }
 
