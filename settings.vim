@@ -26,6 +26,8 @@ set foldnestmax=7
 set foldlevel=99
 set scrolloff=5
 
+set path+=**
+
 " Show replace preview
 set inccommand=split
 
@@ -71,3 +73,6 @@ imap <BS>  <Plug>(PearTreeBackspace)
 imap <Esc> <Plug>(PearTreeFinishExpansion)
 
 let g:rooter_patterns = [".git", "Makefile", "conf.lua", "*.nimble"]
+let g:netrw_banner = 0
+
+
