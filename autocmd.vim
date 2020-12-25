@@ -10,6 +10,9 @@ autocmd VimLeave * call system("set_title " . g:original_window_title)
 " Remember last position in file
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+autocmd VimEnter * let g:licenses_authors_name = system("git config user.name") |
+            \let g:licenses_copyright_holders_name = g:licenses_authors_name
+
 augroup Filetypes
     autocmd!
     " Remove continuation of comments with o and O

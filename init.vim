@@ -1,9 +1,11 @@
 call plug#begin('~/.vim/plugged')
 
+" Plug 'airblade/vim-rooter' " Cd into root directory of project
+" Plug '~/dev/nim/nim.vim'
 Plug 'AndrewRadev/sideways.vim' " Move function arguments
 Plug 'airblade/vim-gitgutter' " Show git info in gutter
-Plug 'airblade/vim-rooter' " Cd into root directory of project
 Plug 'akinsho/nvim-toggleterm.lua' " Toggleable terminals
+Plug 'antoyo/vim-licenses'
 Plug 'cespare/vim-toml' " Toml support
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview in browser
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy searching and finding
@@ -20,6 +22,7 @@ Plug 'roryokane/detectindent' " Indent detection
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Colorize color codes (required Go)
 Plug 'sbdchd/neoformat' " File formatting
 Plug 'schickling/vim-bufonly' " Close all but current buffer
+Plug 'ten3roberts/nim.vim'
 Plug 'tikhomirov/vim-glsl' " glsl file support
 Plug 'tmsvg/pear-tree' " Automatic addition of closing delimiters
 Plug 'tpope/vim-abolish' " Smart text replacement and case coercion
@@ -27,8 +30,8 @@ Plug 'tpope/vim-commentary' " Toggle comments
 Plug 'tpope/vim-eunuch' " Unix commands like renaming and moving current file
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'tpope/vim-surround' " Surround with delimiters
+Plug 'vim-scripts/headerguard'
 Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
-Plug 'ten3roberts/nim.vim'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
