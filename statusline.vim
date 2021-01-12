@@ -60,7 +60,7 @@ set statusline+=%#StringRev#
 set statusline+=\ %{StatuslineGit()}
 set statusline+=\ %#PMenuSel#
 set statusline+=\ %f
-set statusline+=\ %#Normal#
+set statusline+=\ %#DarkenedPanel#
 set statusline+=%{StatuslineModified()}
 set statusline+=%=
 set statusline+=%{StatuslineNeomake()}

@@ -3,8 +3,8 @@ au TermEnter * if index(termFtToIgnore, &ft) < 0 | tnoremap <buffer> <Esc> <c-\>
 au TermOpen * setlocal nonumber norelativenumber
 
 " Set window title to current working directory
-" autocmd DirChanged * call system('set_title "Neovim - `pwd | rev | cut -d/ -f -2 | rev`"')
-" autocmd DirChanged,VimEnter * call luaeval('require "project_conf".load()')
+autocmd DirChanged,VimEnter * call system('set_title Neovim\ `pwd | sed "s|$HOME|~|"`')
+autocmd DirChanged,VimEnter * call luaeval('require "project_conf".load()')
 autocmd VimLeave * call system("set_title " . g:original_window_title)
 
 " Remember last position in file
@@ -17,10 +17,11 @@ augroup Filetypes
     autocmd!
     " Remove continuation of comments with o and O
     autocmd FileType * set formatoptions-=o
+    autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 
     " Darken certain filetypes
-    autocmd FileType * call HighlightWindow()
-    autocmd WinEnter * call HighlightWindow()
+    " autocmd FileType * call HighlightWindow()
+    " autocmd WinEnter * call HighlightWindow()
 
     autocmd BufEnter * hi! link PMenu DarkenedPanel
 
@@ -28,7 +29,7 @@ augroup Filetypes
 
     autocmd BufEnter,FileType * call luaeval('require "term_exec".set_ft()')
 
-    autocmd FileType markdown,nim,rust set textwidth=80
+    autocmd FileType c,markdown,nim,rust set textwidth=80
 augroup end
 
 " autocmd StdinReadPre * let s:std_in=1

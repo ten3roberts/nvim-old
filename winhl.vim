@@ -2,6 +2,7 @@ let s:darken_ft = ['netrw', 'fzf', 'toggleterm']
 
 " Change highlight group of preview window when open
 function! HighlightWindow()
+    echo "Winhl, " . &previewwindow . "; ft: " . &ft
     if &previewwindow || index(s:darken_ft, &ft) != -1
         set winhl=Normal:DarkenedPanel,EndOfBuffer:DarkenedPanel,SignColumn:DarkenedPanel
     else

@@ -16,6 +16,13 @@ let g:neomake_info_sign = {
             \ 'texthl': 'NeomakeInfoSign'
             \ }
 let g:neomake_virtualtext_prefix = '> '
+
+let g:neomake_c_enabled_makers = ['clangtidy', 'clangcheck']
+
+" let g:neomake_open_list = 1
+
+" let g:neomake_cpp_enabled_makers = g:neomake_c_enabled_makers 
+
 function! MyOnBattery()
     if has('macunix')
         return match(system('pmset -g batt'), "Now drawing from 'Battery Power'") != -1
@@ -29,5 +36,5 @@ endfunction
 if MyOnBattery()
     call neomake#configure#automake('w')
 else
-    call neomake#configure#automake('rnw', 1000)
+    call neomake#configure#automake('rnw', 500)
 endif

@@ -1,14 +1,16 @@
 set cmdheight=1
-" Don't show --INSERT-- and alike
-" set noshowmode
 " Smart auto indentation
 set autoindent smartindent
 
 " Tabs
-set tabstop=4
-set shiftwidth=0 expandtab
+set tabstop=2
+set shiftwidth=2 
+set expandtab
 " set mouse=a
 set softtabstop=-1
+
+" Better splits in debug mode
+let g:termdebug_wide=1
 
 set number
 set numberwidth=2
@@ -38,7 +40,8 @@ set hidden
 set equalalways
 
 " Case Insensitivity Pattern Matching
-set ignorecase " Overrides ignorecase if pattern contains upcase
+set ignorecase
+" Overrides ignorecase if pattern contains upcase
 set smartcase
 
 set listchars=tab:⇥\  list
@@ -47,15 +50,14 @@ set linebreak
 let showbreak='++' 
 
 let g:Hexokinase_highlighters = [
-\   'virtual',
-\   'foregroundfull'
-\ ]
+      \   'virtual',
+      \   'foregroundfull'
+      \ ]
 
 let g:Hexokinase_refreshEvents = ['BufRead', 'BufWrite', 'InsertLeave']
 
 " Autopairs
 " Smart pairs are disabled by default:
-let g:pear_tree_repeatable_expand   = 0
 let g:pear_tree_smart_openers       = 1
 let g:pear_tree_smart_closers       = 1
 let g:pear_tree_smart_backspace     = 1
@@ -65,14 +67,10 @@ let g:pear_tree_timeout = 180
 
 " Don't automatically map <BS>, <CR>, and <Esc>
 let g:pear_tree_map_special_keys = 0
+let g:AutoPairsMapCR=1
 
-" Default mappings:
-imap <BS>  <Plug>(PearTreeBackspace)
-" Set by completion.vim instead
-" imap <CR>  <Plug>(PearTreeExpand)
-imap <Esc> <Plug>(PearTreeFinishExpansion)
 
 let g:rooter_patterns = [".git", "Makefile", "conf.lua", "*.nimble"]
 let g:netrw_banner = 0
-
+let g:netrw_list_hide = '^./$,^../$'
 

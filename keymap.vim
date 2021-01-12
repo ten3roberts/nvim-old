@@ -3,11 +3,17 @@ let g:mapleader=" "
 nnoremap gb :call ToggleBool()<CR>
 
 " Make j and k move to the next row, not file line
-nnoremap <silent> j gj
-nnoremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> k gk
+
+" Use paragraph movement instead of page movement
+" Hard to reach {} on sv keyboard
+noremap <silent> <C-u> {
+noremap <silent> <C-d> }
 
 " Jump to beginning and end of line in insert mode
 inoremap <C-e> <Esc>A
+noremap <C-e> <Esc>A
 inoremap <C-b> <Esc>I
 
 " Select all text
@@ -53,29 +59,29 @@ command! Cd cd %:p:h
 " ========================================
 " Windows
 " Remap window controls to leader+w
-nnoremap <leader>ww <C-w>w
-nnoremap <leader>wv <C-w>v<C-w>l
-nnoremap <leader>ws <C-w>s<C-w>j
+" nnoremap <leader>ww <C-w>w
+" nnoremap <leader>wv <C-w>v<C-w>l
+" nnoremap <leader>ws <C-w>s<C-w>j
 " Window Movement
-nnoremap <leader>wh <C-w>h
-nnoremap <leader>wj <C-w>j
-nnoremap <leader>wk <C-w>k
-nnoremap <leader>wl <C-w>l
+" nnoremap <leader>wh <C-w>h
+" nnoremap <leader>wj <C-w>j
+" nnoremap <leader>wk <C-w>k
+" nnoremap <leader>wl <C-w>l
 
-nnoremap <leader>wo <C-w>o
+" nnoremap <leader>wo <C-w>o
 
 " Window swapping
-nnoremap <leader>wH <C-w>H
-nnoremap <leader>wJ <C-w>J
-nnoremap <leader>wK <C-w>K
-nnoremap <leader>wL <C-w>L
-nnoremap <leader>wq <C-w>q
+" nnoremap <leader>wH <C-w>H
+" nnoremap <leader>wJ <C-w>J
+" nnoremap <leader>wK <C-w>K
+" nnoremap <leader>wL <C-w>L
+" nnoremap <leader>wq <C-w>q
 
 " Switch windows directionally with C-direction
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <C-H> <C-W>h
+" nnoremap <C-J> <C-W>j
+" nnoremap <C-K> <C-W>k
+" nnoremap <C-L> <C-W>l
+" nnoremap <C-H> <C-W>h
 
 " inoremap <C-J> <Esc><C-W>j
 " inoremap <C-K> <Esc><C-W>k
@@ -145,7 +151,7 @@ nnoremap <leader>et <cmd>lua require "term_exec".exec("test")<CR>
 
 " ===============================================================================
 " Vim Fugitive
-nnoremap <silent><leader>gg  :tabedit %<CR>:Git<CR><C-W>o
+nnoremap <silent><leader>gg  :Git<CR> "<C-W>o
 nnoremap <silent><leader>ga. :Git add %<CR>
 nnoremap         <leader>gK  :Git checkout -b<space>
 " nnoremap         <leader>gf  :Gpull<CR>
@@ -199,7 +205,7 @@ nnoremap <leader>ci :Indent<CR>
 nnoremap <leader>cf :Neoformat<CR>
 
 nnoremap <silent> <leader>o  :call FZFOpen(':Symbols')<CR>
-nnoremap <silent> <leader>gw :call FZFOpen(':WorkspaceSymbols')<CR>
+nnoremap <silent> <leader>O :call FZFOpen(':WorkspaceSymbols')<CR>
 
 " ===============================================================================
 " Neomake
@@ -215,5 +221,11 @@ nnoremap z0 :set foldlevel=0<CR>
 nnoremap z1 :set foldlevel=1<CR>
 nnoremap z2 :set foldlevel=2<CR>
 nnoremap z3 :set foldlevel=3<CR>
+nnoremap z4 :set foldlevel=4<CR>
+nnoremap z5 :set foldlevel=5<CR>
+nnoremap z6 :set foldlevel=6<CR>
+nnoremap z7 :set foldlevel=7<CR>
+nnoremap z8 :set foldlevel=8<CR>
+nnoremap z9 :set foldlevel=9<CR>
 nnoremap z- :set foldlevel-=1 <Bar> call Info('&foldlevel =', &foldlevel)<CR>
 nnoremap z+ :set foldlevel+=1 <Bar> call Info('&foldlevel =', &foldlevel)<CR>
