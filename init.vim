@@ -1,9 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-" Plug 'airblade/vim-rooter' " Cd into root directory of project
-" Plug 'psliwka/vim-smoothie' " Smooth C-U and C-D
-" Plug 'tmsvg/pear-tree'
-" Plug '~/dev/nim/nim.vim'
 Plug 'AndrewRadev/sideways.vim' " Move function arguments
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neosnippet.vim'
@@ -14,7 +10,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy searching and finding
 Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
-Plug 'junegunn/rainbow_parentheses.vim' " Rainbow parenthesis
 Plug 'junegunn/vim-easy-align' " Align text
 Plug 'justinmk/vim-sneak' " Like t and f but accepts two characters
 Plug 'michaeljsmith/vim-indent-object' "Adds selection by indent
@@ -32,7 +27,6 @@ Plug 'tpope/vim-commentary' " Toggle comments
 Plug 'tpope/vim-eunuch' " Unix commands like renaming and moving current file
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'tpope/vim-surround' " Surround with delimiters
-Plug 'vim-scripts/headerguard'
 Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
 
 Plug 'neovim/nvim-lspconfig'
@@ -41,6 +35,8 @@ Plug 'steelsojka/completion-buffers'
 
 " Color schemes
 Plug 'arcticicestudio/nord-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'joshdick/onedark.vim'
@@ -62,7 +58,9 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-let g:gruvbox_contrast_dark = "hard"
+" let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_sign_column="bg0"
+" let g:gruvbox_vert_split="bg1"
 colorscheme gruvbox
 packadd termdebug
 

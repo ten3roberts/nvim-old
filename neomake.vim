@@ -1,20 +1,21 @@
 
 let g:neomake_error_sign = {
-            \ 'text': '•',
+            \ 'text': 'E',
             \ 'texthl': 'NeomakeErrorSign',
             \ }
 let g:neomake_warning_sign = {
-            \   'text': '.',
+            \   'text': 'W',
             \   'texthl': 'NeomakeWarningSign',
             \ }
 let g:neomake_message_sign = {
-            \   'text': '.',
+            \   'text': 'M',
             \   'texthl': 'NeomakeMessageSign',
             \ }
 let g:neomake_info_sign = {
-            \ 'text': '_',
+            \ 'text': 'I',
             \ 'texthl': 'NeomakeInfoSign'
             \ }
+let g:neomake_virtualtext_current_error=1
 let g:neomake_virtualtext_prefix = '> '
 
 let g:neomake_c_enabled_makers = ['clangtidy', 'clangcheck']
