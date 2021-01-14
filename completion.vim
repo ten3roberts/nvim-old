@@ -33,7 +33,7 @@ let g:completion_timer_cycle = 200
 
 let g:completion_chain_complete_list = {
             \ 'default': [
-            \{'complete_items': ['lsp', 'path']},
+            \{'complete_items': ['lsp', 'path', 'buffer']},
             \{'mode': '<c-p>'},
             \{'mode': '<c-n>'}
             \]}
