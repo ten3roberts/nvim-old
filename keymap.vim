@@ -49,11 +49,6 @@ vnoremap <A-k> :m '<-2<CR>gv
 " Clear last used search pattern
 nnoremap <silent><Esc> :noh<return><Esc>
 
-" Fix jump when using highlight current word
-nnoremap * *``
-
-" Show replace preview
-
 command! Cd cd %:p:h
 
 " ========================================
@@ -151,7 +146,7 @@ nnoremap <leader>et <cmd>lua require "term_exec".exec("test")<CR>
 
 " ===============================================================================
 " Vim Fugitive
-nnoremap <silent><leader>gg  :Git<CR> "<C-W>o
+nnoremap <silent><leader>gg  :Git<CR><C-W>o
 nnoremap <silent><leader>ga. :Git add %<CR>
 nnoremap         <leader>gK  :Git checkout -b<space>
 " nnoremap         <leader>gf  :Gpull<CR>
