@@ -99,5 +99,5 @@ endfunc
 
 command! Indent normal! mggg=G`g
 
-let g:original_window_title = system("xtitle")
+let g:original_window_title = system("xdotool getactivewindow getwindowname")
 call system("set_title Neovim")
