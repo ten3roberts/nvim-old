@@ -6,8 +6,8 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'airblade/vim-gitgutter' " Show git info in gutter
 Plug 'akinsho/nvim-toggleterm.lua' " Toggleable terminals
 Plug 'cespare/vim-toml' " Toml support
+Plug 'drmikehenry/vim-headerguard' "Add header guards to C files
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview in browser
-Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy searching and finding
 Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
 Plug 'junegunn/vim-easy-align' " Align text
@@ -15,12 +15,16 @@ Plug 'justinmk/vim-sneak' " Like t and f but accepts two characters
 Plug 'michaeljsmith/vim-indent-object' "Adds selection by indent
 Plug 'neomake/neomake'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'preservim/nerdtree'
+Plug 'psliwka/vim-smoothie' " Smooth scrolling
 Plug 'rhysd/git-messenger.vim' " Blame current line
 Plug 'roryokane/detectindent' " Indent detection
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Colorize color codes (required Go)
+Plug 'rstacruz/vim-closer' " Automatically close delimiters on newline
 Plug 'sbdchd/neoformat' " File formatting
 Plug 'schickling/vim-bufonly' " Close all but current buffer
 Plug 'ten3roberts/nim.vim'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tikhomirov/vim-glsl' " glsl file support
 Plug 'tpope/vim-abolish' " Smart text replacement and case coercion
 Plug 'tpope/vim-commentary' " Toggle comments
@@ -50,18 +54,18 @@ let g:vimrc = expand('<sfile>:p')
 
 " Source file
 function! s:load(file)
-    let file = s:rcpath . '/' . a:file
-    execute (l:file =~# '.lua$' ? 'luafile' : 'source') fnameescape(l:file)
+  let file = s:rcpath . '/' . a:file
+  execute (l:file =~# '.lua$' ? 'luafile' : 'source') fnameescape(l:file)
 endfunction
 
 if (has("termguicolors"))
-    set termguicolors
+  set termguicolors
 endif
 
 " let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_sign_column="bg0"
 " let g:gruvbox_vert_split="bg1"
-colorscheme gruvbox
+colorscheme base16-default-dark
 packadd termdebug
 
 call s:load('keymap.vim')
@@ -80,12 +84,12 @@ call s:load('switchheader.vim')
 lua require "init"
 
 function! AlternateFile()
-    return expand('#')
+  return expand('#')
 endfunction
 
 " Echoes all arguments
 function! Info(...)
-    echo join(a:000, ' ')
+  echo join(a:000, ' ')
 endfunction
 
 " Show syntax highlighting groups for word under cursor

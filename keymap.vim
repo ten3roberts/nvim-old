@@ -8,8 +8,8 @@ noremap <silent> k gk
 
 " Use paragraph movement instead of page movement
 " Hard to reach {} on sv keyboard
-noremap <silent> <C-u> {
-noremap <silent> <C-d> }
+" noremap <silent> <C-u> {
+" noremap <silent> <C-d> }
 
 " Jump to beginning and end of line in insert mode
 inoremap <C-e> <Esc>A
@@ -120,9 +120,11 @@ nnoremap <silent> <A-9>      :b 9<CR>
 " ===============================================================================
 "  Netrw
 
-nnoremap <leader>pv :Vexplore <bar> :vertical resize 30<CR>
+nnoremap <leader>pv :Lexplore<CR>
 nnoremap <leader>ps :Sexplore<CR>
 nnoremap <leader>pe :Explore<CR>
+
+nnoremap <leader>f :NERDTreeFind<CR>
 
 " For us swedes
 noremap å <C-^>
@@ -168,14 +170,18 @@ nnoremap <silent><leader>hs :GitGutterStageHunk<CR>
 nnoremap <silent><leader>hv :GitGutterPreviewHunk<CR>
 "Confirm with enter
 nnoremap <leader>hx         :GitGutterUndoHunk
-nnoremap <silent>[h         :GitGutterPrevHunk<CR>zvzz
-nnoremap <silent>]h         :GitGutterNextHunk<CR>zvzz
+nnoremap <silent>[h         :GitGutterPrevHunk<CR>
+nnoremap <silent>]h         :GitGutterNextHunk<CR>
+
+nnoremap <leader>hp         :GitGutterPrevHunk<CR>
+nnoremap <leader>hn         :GitGutterNextHunk<CR>
 
 " ===============================================================================
 " fzf
 
 noremap <leader><leader> :call FZFOpen(':Files')<CR>
 noremap <leader>,        :call FZFOpen(':Buffers')<CR>
+noremap <C-p>            :call FZFOpen(':Buffers')<CR>
 noremap <leader>rg       :call FZFOpen(':Rg')<CR>
 noremap <leader>gl       :call FZFOpen(':Commits')<CR>
 noremap <leader>/        :call FZFOpen(':BLines')<CR>

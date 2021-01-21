@@ -46,10 +46,5 @@ augroup Mkdir
     autocmd BufWritePre * if (&buftype == "") | call mkdir(expand("<afile>:p:h"), "p") | endif
 augroup end
 
-augroup Format
-    autocmd!
-    " autocmd BufWritePost * Neoformat
-augroup end
-
 " Use completion-nvim in every buffer
 autocmd BufEnter * lua require'completion'.on_attach()
