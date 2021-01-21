@@ -7,7 +7,8 @@ set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
-set pumheight=8
+set pumheight=6
+set pumwidth=40
 
 " Force open with C-tab
 imap <silent> <C-Space> <Plug>(completion_trigger)
@@ -19,11 +20,13 @@ imap <s-tab> <Plug>(completion_smart_s_tab)
 let g:completion_confirm_key = ""
 
 " autocmd BufEnter * 
-imap <expr> <CR> pumvisible() ? "\<C-y><CR>" : "<CR>"
+" imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
+" \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<Plug>(PearTreeExpand)" :  "\<Plug>(PearTreeExpand)"
+" imap <expr> <CR> pumvisible() ? "\<C-y><CR>" : "<CR>"
 
 let g:completion_enable_auto_popup = 1
 let g:completion_enable_auto_paren = 1
-let g:completion_sorting = "none"
+let g:completion_sorting = "length"
 
 let g:completion_matching_strategy_list = ['exact', 'substring', "fuzzy"]
 
@@ -32,8 +35,9 @@ let g:completion_matching_smart_case = 1
 let g:completion_timer_cycle = 200
 
 let g:completion_chain_complete_list = {
-            \ 'default': [
-            \{'complete_items': ['lsp', 'path', 'buffer']},
-            \{'mode': '<c-p>'},
-            \{'mode': '<c-n>'}
-            \]}
+      \ 'default': [
+      \{'complete_items': [ 'lsp' ]},
+      \{'complete_items': [ 'path', 'buffer' ]},
+      \{'mode': '<c-p>'},
+      \{'mode': '<c-n>'}
+      \]}

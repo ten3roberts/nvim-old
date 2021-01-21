@@ -18,7 +18,8 @@ let g:neomake_info_sign = {
 let g:neomake_virtualtext_current_error=1
 let g:neomake_virtualtext_prefix = '> '
 
-let g:neomake_c_enabled_makers = ['clangtidy', 'clangcheck']
+let g:neomake_c_enabled_makers = ['clangcheck']
+let g:neomake_json_enabled_makers = ['jsonlintpy']
 
 " let g:neomake_open_list = 1
 
