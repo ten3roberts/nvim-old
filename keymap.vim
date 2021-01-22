@@ -3,8 +3,8 @@ let g:mapleader=" "
 nnoremap gb :call ToggleBool()<CR>
 
 " Make j and k move to the next row, not file line
-noremap <silent> j gj
-noremap <silent> k gk
+" noremap <silent> j gj
+" noremap <silent> k gk
 
 " Use paragraph movement instead of page movement
 " Hard to reach {} on sv keyboard

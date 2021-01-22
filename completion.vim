@@ -20,8 +20,8 @@ imap <s-tab> <Plug>(completion_smart_s_tab)
 let g:completion_confirm_key = ""
 
 " autocmd BufEnter * 
-" imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
-" \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<Plug>(PearTreeExpand)" :  "\<Plug>(PearTreeExpand)"
+imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
+\ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<Plug>(PearTreeExpand)" :  "\<Plug>(PearTreeExpand)"
 " imap <expr> <CR> pumvisible() ? "\<C-y><CR>" : "<CR>"
 
 let g:completion_enable_auto_popup = 1
@@ -32,6 +32,7 @@ let g:completion_matching_strategy_list = ['exact', 'substring', "fuzzy"]
 
 let g:completion_matching_smart_case = 1
 
+let g:completion_auto_change_source = 1
 let g:completion_timer_cycle = 200
 
 let g:completion_chain_complete_list = {

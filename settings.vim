@@ -16,6 +16,7 @@ let g:termdebug_wide=1
 set numberwidth=2
 " set signcolumn=yes
 " set relativenumber
+set nowrap
 
 " Switch to window if buffer is already open in it
 set switchbuf=useopen
@@ -64,15 +65,23 @@ let g:netrw_winsize = -28
 let g:netrw_list_hide = '^./$,^../$'
 " let g:netrw_liststyle=3
 
-" " Pair expansion is dot-repeatable by default:
-" let g:pear_tree_repeatable_expand = 1
+" Pair expansion is dot-repeatable by default:
+let g:pear_tree_repeatable_expand = 0
 
-" " Smart pairs are disabled by default:
-" let g:pear_tree_smart_openers = 1
-" let g:pear_tree_smart_closers = 0
-" let g:pear_tree_smart_backspace = 1
+" Smart pairs are disabled by default:
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_smart_closers = 0
+let g:pear_tree_smart_backspace = 1
 
-" let g:pear_tree_map_special_keys = 1
+" If enabled, smart pair functions timeout after 60ms:
+let g:pear_tree_timeout = 60
+
+" Automatically map <BS>, <CR>, and <Esc>
+let g:pear_tree_map_special_keys = 0
+" Default mappings:
+imap <BS> <Plug>(PearTreeBackspace)
+" imap <CR> <Plug>(PearTreeExpand)
+imap <Esc> <Plug>(PearTreeFinishExpansion)
 
 " NOTE: This variable doesn't exist before barbar runs. Create it before
 "       setting any option.

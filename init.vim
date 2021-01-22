@@ -20,7 +20,8 @@ Plug 'psliwka/vim-smoothie' " Smooth scrolling
 Plug 'rhysd/git-messenger.vim' " Blame current line
 Plug 'roryokane/detectindent' " Indent detection
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Colorize color codes (required Go)
-Plug 'rstacruz/vim-closer' " Automatically close delimiters on newline
+" Plug 'rstacruz/vim-closer' " Automatically close delimiters on newline
+Plug 'tmsvg/pear-tree'
 Plug 'sbdchd/neoformat' " File formatting
 Plug 'schickling/vim-bufonly' " Close all but current buffer
 Plug 'ten3roberts/nim.vim'
