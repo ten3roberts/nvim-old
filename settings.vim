@@ -65,6 +65,16 @@ let g:netrw_winsize = -28
 let g:netrw_list_hide = '^./$,^../$'
 " let g:netrw_liststyle=3
 
+" Default rules for matching:
+let g:pear_tree_pairs = {
+      \ '(': {'closer': ')'},
+      \ '[': {'closer': ']'},
+      \ '{': {'closer': '}'},
+      \ "'": {'closer': "'"},
+      \ '"': {'closer': '"'},
+      \ '<': {'closer': '>'},
+      \ '/*': {'closer': '*/'}
+      \ }
 " Pair expansion is dot-repeatable by default:
 let g:pear_tree_repeatable_expand = 0
 
@@ -123,17 +133,17 @@ let bufferline.maximum_padding = 2
 
 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'*',
-                \ 'Staged'    :'+',
-                \ 'Untracked' :'.',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'=',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'x',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
+      \ 'Modified'  :'*',
+      \ 'Staged'    :'+',
+      \ 'Untracked' :'.',
+      \ 'Renamed'   :'➜',
+      \ 'Unmerged'  :'=',
+      \ 'Deleted'   :'✖',
+      \ 'Dirty'     :'✗',
+      \ 'Ignored'   :'x',
+      \ 'Clean'     :'✔︎',
+      \ 'Unknown'   :'?',
+      \ }
 " NERD tree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -143,3 +153,27 @@ let NERDTreeWinSize = 28
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
+
+" you can add these colors to your .vimrc to help customizing
+let s:brown = "905532"
+let s:aqua =  "3AFFDB"
+let s:blue = "689FB6"
+let s:darkBlue = "44788E"
+let s:purple = "834F79"
+let s:lightPurple = "834F79"
+let s:red = "AE403F"
+let s:beige = "F5C06F"
+let s:yellow = "F09F17"
+let s:orange = "D4843E"
+let s:darkOrange = "F16529"
+let s:pink = "CB6F6F"
+let s:salmon = "EE6E73"
+let s:green = "8FAA54"
+let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+let s:rspec_red = 'FE405F'
+let s:git_orange = 'F54D27'
+
+let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExtensionHighlightColor['h'] = s:purple " sets the color of css files to blue
+let g:NERDTreeExtensionHighlightColor['c'] = s:darkBlue " sets the color of css files to blue

@@ -148,7 +148,7 @@ nnoremap <leader>et <cmd>lua require "term_exec".exec("test")<CR>
 
 " ===============================================================================
 " Vim Fugitive
-nnoremap <silent><leader>gg  :Git<CR><C-W>o
+nnoremap <silent><leader>gg  :Git<CR>
 nnoremap <silent><leader>ga. :Git add %<CR>
 nnoremap         <leader>gK  :Git checkout -b<space>
 " nnoremap         <leader>gf  :Gpull<CR>

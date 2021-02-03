@@ -11,25 +11,31 @@ autocmd VimLeave * call system("set_title " . g:original_window_title)
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 autocmd VimEnter * let g:licenses_authors_name = system("git config user.name") |
-            \let g:licenses_copyright_holders_name = g:licenses_authors_name
+      \let g:licenses_copyright_holders_name = g:licenses_authors_name
 
 augroup Filetypes
-    autocmd!
-    " Remove continuation of comments with o and O
-    autocmd FileType * set formatoptions-=o
-    autocmd BufRead,BufNewFile *.h,*.c set filetype=c
+  autocmd!
+  " Remove continuation of comments with o and O
+  autocmd FileType * set formatoptions-=o
+  autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 
-    " Darken certain filetypes
-    " autocmd FileType * call HighlightWindow()
-    " autocmd WinEnter * call HighlightWindow()
+  " Darken certain filetypes
+  " autocmd FileType * call HighlightWindow()
+  " autocmd WinEnter * call HighlightWindow()
 
-    autocmd BufEnter * hi! link PMenu DarkenedPanel
+  " autocmd BufEnter * hi! link PMenu DarkenedPanel
 
-    autocmd FileType fugitive map <buffer> <Tab> =
+  autocmd FileType fugitive map <buffer> <Tab> =
 
-    autocmd BufEnter,FileType * call luaeval('require "term_exec".set_ft()')
+  autocmd BufEnter,FileType * call luaeval('require "term_exec".set_ft()')
 
-    autocmd FileType c,markdown,nim,rust set textwidth=80
+  autocmd FileType c,markdown,nim,rust set textwidth=80
+
+  autocmd BufWritePost *.rs silent! Neoformat
+
+  " Enable type inlay hints
+  " autocmd InsertLeave,BufEnter,BufWritePost *.rs
+  "       \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
 augroup end
 
 " autocmd StdinReadPre * let s:std_in=1
@@ -42,8 +48,8 @@ augroup end
 
 " Create directories to save file
 augroup Mkdir
-    autocmd!
-    autocmd BufWritePre * if (&buftype == "") | call mkdir(expand("<afile>:p:h"), "p") | endif
+  autocmd!
+  autocmd BufWritePre * if (&buftype == "") | call mkdir(expand("<afile>:p:h"), "p") | endif
 augroup end
 
 " Use completion-nvim in every buffer

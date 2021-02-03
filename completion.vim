@@ -25,6 +25,7 @@ imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
 " imap <expr> <CR> pumvisible() ? "\<C-y><CR>" : "<CR>"
 
 let g:completion_enable_auto_popup = 1
+let g:completion_trigger_keyword_length = 2
 let g:completion_enable_auto_paren = 1
 let g:completion_sorting = "length"
 
@@ -38,7 +39,7 @@ let g:completion_timer_cycle = 200
 let g:completion_chain_complete_list = {
       \ 'default': [
       \{'complete_items': [ 'lsp' ]},
-      \{'complete_items': [ 'path', 'buffer' ]},
+      \{'complete_items': [ 'lsp', 'path', 'buffer' ]},
       \{'mode': '<c-p>'},
       \{'mode': '<c-n>'}
       \]}
