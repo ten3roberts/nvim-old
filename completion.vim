@@ -29,17 +29,14 @@ let g:completion_trigger_keyword_length = 2
 let g:completion_enable_auto_paren = 1
 let g:completion_sorting = "length"
 
-let g:completion_matching_strategy_list = ['exact', 'substring', "fuzzy"]
+let g:completion_matching_strategy_list = ['exact', 'substring']
 
 let g:completion_matching_smart_case = 1
 
-let g:completion_auto_change_source = 1
-let g:completion_timer_cycle = 200
+let g:completion_auto_change_source = 0
 
 let g:completion_chain_complete_list = {
       \ 'default': [
       \{'complete_items': [ 'lsp' ]},
-      \{'complete_items': [ 'lsp', 'path', 'buffer' ]},
-      \{'mode': '<c-p>'},
-      \{'mode': '<c-n>'}
+      \{'complete_items': [ 'path', 'buffer' ]}
       \]}

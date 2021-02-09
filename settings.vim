@@ -16,7 +16,7 @@ let g:termdebug_wide=1
 set numberwidth=2
 " set signcolumn=yes
 " set relativenumber
-set nowrap
+" set nowrap
 
 " Switch to window if buffer is already open in it
 set switchbuf=useopen
@@ -49,6 +49,9 @@ set listchars=tab:⇥\  list
 " Never breaking at end of words
 set linebreak
 let showbreak='++' 
+
+set splitbelow
+set splitright
 
 let g:Hexokinase_highlighters = [
       \   'virtual',
@@ -177,3 +180,11 @@ let s:git_orange = 'F54D27'
 let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExtensionHighlightColor['h'] = s:purple " sets the color of css files to blue
 let g:NERDTreeExtensionHighlightColor['c'] = s:darkBlue " sets the color of css files to blue
+
+function! OnlyAndNerdtree()
+    let currentWindowID = win_getid()
+
+    windo if win_getid() != currentWindowID && &filetype != 'nerdtree' | close | endif
+endfunction
+
+command! Only call OnlyAndNerdtree()

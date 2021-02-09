@@ -31,7 +31,7 @@ augroup Filetypes
 
   autocmd FileType c,markdown,nim,rust set textwidth=80
 
-  autocmd BufWritePost *.rs silent! Neoformat
+  autocmd BufWritePre *.rs silent! Neoformat
 
   " Enable type inlay hints
   " autocmd InsertLeave,BufEnter,BufWritePost *.rs
@@ -49,7 +49,7 @@ augroup end
 " Create directories to save file
 augroup Mkdir
   autocmd!
-  autocmd BufWritePre * if (&buftype == "") | call mkdir(expand("<afile>:p:h"), "p") | endif
+  autocmd BufWritePre * silent! if (&buftype == "") | call mkdir(expand("<afile>:p:h"), "p") | endif
 augroup end
 
 " Use completion-nvim in every buffer

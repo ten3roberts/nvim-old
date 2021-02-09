@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
+" Plug 'rstacruz/vim-closer' " Automatically close delimiters on newline
 Plug 'AndrewRadev/sideways.vim' " Move function arguments
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neosnippet.vim'
@@ -20,19 +21,18 @@ Plug 'psliwka/vim-smoothie' " Smooth scrolling
 Plug 'rhysd/git-messenger.vim' " Blame current line
 Plug 'roryokane/detectindent' " Indent detection
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Colorize color codes (required Go)
-" Plug 'rstacruz/vim-closer' " Automatically close delimiters on newline
-Plug 'tmsvg/pear-tree'
 Plug 'sbdchd/neoformat' " File formatting
 Plug 'schickling/vim-bufonly' " Close all but current buffer
 Plug 'ten3roberts/nim.vim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tikhomirov/vim-glsl' " glsl file support
+Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-abolish' " Smart text replacement and case coercion
 Plug 'tpope/vim-commentary' " Toggle comments
 Plug 'tpope/vim-eunuch' " Unix commands like renaming and moving current file
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'tpope/vim-surround' " Surround with delimiters
-Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
+" Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -65,8 +65,12 @@ endif
 
 " let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_sign_column="bg0"
+if empty($VIM_COLORSCHEME)
+  let $VIM_COLORSCHEME="one"
+endif
+
 " let g:gruvbox_vert_split="bg1"
-colorscheme base16-default-dark
+colorscheme $VIM_COLORSCHEME
 packadd termdebug
 
 call s:load('keymap.vim')

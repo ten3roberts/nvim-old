@@ -3,8 +3,8 @@ let g:mapleader=" "
 nnoremap gb :call ToggleBool()<CR>
 
 " Make j and k move to the next row, not file line
-" noremap <silent> j gj
-" noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> k gk
 
 " Use paragraph movement instead of page movement
 " Hard to reach {} on sv keyboard
@@ -15,6 +15,12 @@ nnoremap gb :call ToggleBool()<CR>
 inoremap <C-e> <Esc>A
 noremap <C-e> <Esc>A
 inoremap <C-b> <Esc>I
+
+" Window only but keep nerdtree
+nnoremap <C-w>o :Only<CR>
+
+noremap <C-k> {
+noremap <C-j> }
 
 " Select all text
 nnoremap vA ggVG
