@@ -1,10 +1,10 @@
 call plug#begin('~/.vim/plugged')
 
-" Plug 'rstacruz/vim-closer' " Automatically close delimiters on newline
 Plug 'AndrewRadev/sideways.vim' " Move function arguments
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neosnippet.vim'
 Plug 'airblade/vim-gitgutter' " Show git info in gutter
+Plug 'airblade/vim-rooter'
 Plug 'akinsho/nvim-toggleterm.lua' " Toggleable terminals
 Plug 'cespare/vim-toml' " Toml support
 Plug 'drmikehenry/vim-headerguard' "Add header guards to C files
@@ -32,7 +32,7 @@ Plug 'tpope/vim-commentary' " Toggle comments
 Plug 'tpope/vim-eunuch' " Unix commands like renaming and moving current file
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'tpope/vim-surround' " Surround with delimiters
-" Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
+Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -65,6 +65,7 @@ endif
 
 " let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_sign_column="bg0"
+let g:gruvbox_contrast_dark="hard"
 if empty($VIM_COLORSCHEME)
   let $VIM_COLORSCHEME="one"
 endif

@@ -16,14 +16,7 @@ autocmd VimEnter * let g:licenses_authors_name = system("git config user.name") 
 augroup Filetypes
   autocmd!
   " Remove continuation of comments with o and O
-  autocmd FileType * set formatoptions-=o
   autocmd BufRead,BufNewFile *.h,*.c set filetype=c
-
-  " Darken certain filetypes
-  " autocmd FileType * call HighlightWindow()
-  " autocmd WinEnter * call HighlightWindow()
-
-  " autocmd BufEnter * hi! link PMenu DarkenedPanel
 
   autocmd FileType fugitive map <buffer> <Tab> =
 

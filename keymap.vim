@@ -89,15 +89,6 @@ command! Cd cd %:p:h
 " inoremap <C-L> <Esc><C-W>l
 " inoremap <C-H> <Esc><C-W>h
 
-" Resizing
-nnoremap <leader>w<  <C-w><
-nnoremap <leader>w>  <C-w>>
-nnoremap <leader>w+  <C-w>+
-nnoremap <leader>w-  <C-w>-
-nnoremap <leader>w=  <C-w>=
-nnoremap <leader>w_  <C-w>_
-nnoremap <leader>w\| <C-w>w\|
-
 " Swap order in lists
 nnoremap <A-h> :SidewaysLeft<cr>
 nnoremap <A-l> :SidewaysRight<cr>
@@ -154,7 +145,7 @@ nnoremap <leader>et <cmd>lua require "term_exec".exec("test")<CR>
 
 " ===============================================================================
 " Vim Fugitive
-nnoremap <silent><leader>gg  :Git<CR>
+nnoremap <silent><leader>gg  :Ge :<CR>
 nnoremap <silent><leader>ga. :Git add %<CR>
 nnoremap         <leader>gK  :Git checkout -b<space>
 " nnoremap         <leader>gf  :Gpull<CR>

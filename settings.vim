@@ -50,7 +50,6 @@ set listchars=tab:⇥\  list
 set linebreak
 let showbreak='++' 
 
-set splitbelow
 set splitright
 
 let g:Hexokinase_highlighters = [
@@ -182,9 +181,12 @@ let g:NERDTreeExtensionHighlightColor['h'] = s:purple " sets the color of css fi
 let g:NERDTreeExtensionHighlightColor['c'] = s:darkBlue " sets the color of css files to blue
 
 function! OnlyAndNerdtree()
-    let currentWindowID = win_getid()
+  let currentWindowID = win_getid()
 
-    windo if win_getid() != currentWindowID && &filetype != 'nerdtree' | close | endif
+  windo if win_getid() != currentWindowID && &filetype != 'nerdtree' | close | endif
 endfunction
 
 command! Only call OnlyAndNerdtree()
+
+
+let g:rooter_patterns = ['.git', '.hg', '.bzr', '.svn', 'project.lua']

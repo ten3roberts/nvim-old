@@ -12,10 +12,10 @@ function M.load()
         return
     end
 
-    local chunk,err = loadfile("conf.lua", 't', env)
+    local chunk,err = loadfile("project.lua", 't', env)
 
     if err then
-        print("[Config error] conf.lua: " .. err)
+        print("[Config error] project.lua: " .. err)
         config = {}
         return
     end
