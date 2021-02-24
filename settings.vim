@@ -20,14 +20,16 @@ set numberwidth=2
 
 " Switch to window if buffer is already open in it
 set switchbuf=useopen
-set foldmethod=indent
+" set foldmethod=indent
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
-set foldtext=MyFoldText()
+" set foldtext=MyFoldText()
 
-set nofoldenable
-set foldnestmax=7
-set foldlevel=99
+set foldnestmax=5
+set foldlevel=3
 set scrolloff=5
+set updatetime=500
 
 set path+=**
 
@@ -37,13 +39,6 @@ set inccommand=split
 set autoread
 " Switch dirty buffers
 set hidden
-
-set equalalways
-
-" Case Insensitivity Pattern Matching
-set ignorecase
-" Overrides ignorecase if pattern contains upcase
-set smartcase
 
 set listchars=tab:⇥\  list
 " Never breaking at end of words
@@ -190,3 +185,9 @@ command! Only call OnlyAndNerdtree()
 
 
 let g:rooter_patterns = ['.git', '.hg', '.bzr', '.svn', 'project.lua']
+
+
+sign define LspDiagnosticsSignError text=●  texthl=LspDiagnosticsSignError linehl= numhl=
+sign define LspDiagnosticsSignWarning text=- texthl=LspDiagnosticsSignWarning linehl= numhl=
+sign define LspDiagnosticsSignInformation text=. texthl=LspDiagnosticsSignInformation linehl= numhl=
+sign define LspDiagnosticsSignHint text=. texthl=LspDiagnosticsSignHint linehl= numhl=

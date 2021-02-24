@@ -13,8 +13,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy searching and findin
 Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
 Plug 'junegunn/vim-easy-align' " Align text
 Plug 'justinmk/vim-sneak' " Like t and f but accepts two characters
-Plug 'michaeljsmith/vim-indent-object' "Adds selection by indent
-Plug 'neomake/neomake'
+Plug 'michaeljsmith/vim-indent-object' " Adds selection by indent
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdtree'
 Plug 'psliwka/vim-smoothie' " Smooth scrolling
@@ -81,7 +80,6 @@ call s:load('fzf.vim')
 call s:load('settings.vim')
 call s:load('winhl.vim')
 call s:load('kwbd.vim')
-call s:load('neomake.vim')
 call s:load('completion.vim')
 call s:load('bool.vim')
 call s:load('onlines.vim')

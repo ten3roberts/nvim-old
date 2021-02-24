@@ -58,6 +58,11 @@ nnoremap <silent><Esc> :noh<return><Esc>
 command! Cd cd %:p:h
 
 " ========================================
+" Location list
+nnoremap <leader>l :lopen<CR> | wincmd p
+nnoremap <leader>j :lnext<CR>
+nnoremap <leader>k :lprev<CR>
+
 " Windows
 " Remap window controls to leader+w
 " nnoremap <leader>ww <C-w>w
@@ -94,25 +99,9 @@ nnoremap <A-h> :SidewaysLeft<cr>
 nnoremap <A-l> :SidewaysRight<cr>
 
 " =================================================================
-" Barbar
-" Magic buffer-picking mode
-nnoremap <silent> <leader>bp :BufferPick<CR>
-" Sort automatically by...
+" Buffers
 nnoremap <silent> <leader>bk :Kwbd<CR>
 nnoremap <silent> <leader>bo :BufOnly<CR>
-" Move to previous/next
-nnoremap <silent> <A-,>      :bp<CR>
-nnoremap <silent> <A-.>      :bn<CR>
-" Goto buffer in position...
-nnoremap <silent> <A-1>      :b 1<CR>
-nnoremap <silent> <A-2>      :b 2<CR>
-nnoremap <silent> <A-3>      :b 3<CR>
-nnoremap <silent> <A-4>      :b 4<CR>
-nnoremap <silent> <A-5>      :b 5<CR>
-nnoremap <silent> <A-6>      :b 6<CR>
-nnoremap <silent> <A-7>      :b 7<CR>
-nnoremap <silent> <A-8>      :b 8<CR>
-nnoremap <silent> <A-9>      :b 9<CR>
 
 " ===============================================================================
 "  Netrw
@@ -135,8 +124,6 @@ noremap <leader>yc :let @*=@"<CR>
 " Terminal
 " Open terminal with or without prefix with leader t
 nnoremap <silent><leader>t :<C-u>exe v:count1 . "ToggleTerm"<CR>
-
-
 " ===============================================================================
 " Terminal Execs
 nnoremap <leader>eb <cmd>lua require "term_exec".exec("build")<CR>
@@ -204,11 +191,6 @@ nnoremap <leader>cf :Neoformat<CR>
 
 nnoremap <silent> <leader>o  :call FZFOpen(':Symbols')<CR>
 nnoremap <silent> <leader>O :call FZFOpen(':WorkspaceSymbols')<CR>
-
-" ===============================================================================
-" Neomake
-nnoremap <silent> <leader>j :NeomakeNextLoclist<CR>
-nnoremap <silent> <leader>k :NeomakePrevLoclist<CR>
 
 
 " ===============================================================================

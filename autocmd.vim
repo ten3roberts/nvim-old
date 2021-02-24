@@ -26,6 +26,7 @@ augroup Filetypes
 
   autocmd BufWritePre *.rs silent! Neoformat
 
+  autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
   " Enable type inlay hints
   " autocmd InsertLeave,BufEnter,BufWritePost *.rs
   "       \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }

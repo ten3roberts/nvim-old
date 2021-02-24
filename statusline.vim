@@ -63,7 +63,7 @@ set statusline+=\ %f
 set statusline+=\ %#DarkenedPanel#
 set statusline+=%{StatuslineModified()}
 set statusline+=%=
-set statusline+=%{StatuslineNeomake()}
+" set statusline+=%{StatuslineNeomake()}
 set statusline+=%{&filetype}
 set statusline+=\ %#PMenuSel#
 set statusline+=\ %p%%
