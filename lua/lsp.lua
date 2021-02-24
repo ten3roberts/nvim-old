@@ -98,25 +98,25 @@ local custom_attach = function(client)
   map("n", "g0", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
   -- map('n','<leader>ee','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
   map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-  -- map("n", "<leader>k", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
-  -- map("n", "<leader>j", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
+  map("n", "<leader>k", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
+  map("n", "<leader>j", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
+  map("n", "<leader>l", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
   -- map('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
   -- map("n", "<leader>ai", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
   -- map("n", "<leader>ao", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
 end
 
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   function(err, method, result, client_id, bufnr, config)
     vim.lsp.diagnostic.on_publish_diagnostics(err, method, result, client_id, bufnr, config)
-    local buffer_diags = vim.lsp.diagnostic.get(bufnr, nil)
+    -- local buffer_diags = vim.lsp.diagnostic.get(bufnr, nil)
 
-    -- Automatically open and close location list
-    if #buffer_diags > 0 then
-      vim.lsp.diagnostic.set_loclist({open_loclist = false})
-      else
-      vim.lsp.util.set_loclist()
-    end
+    -- -- Automatically open and close location list
+    -- if #buffer_diags > 0 then
+    --   vim.lsp.diagnostic.set_loclist({open_loclist = false, severity_limit = "Warning"})
+    --   else
+    --   vim.lsp.util.set_loclist()
+    -- end
   end,
   {
     -- Enable underline, use default values

@@ -105,6 +105,26 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
+function! MakeSession()
+  let b:sessiondir = $HOME . "/.local/share/nvim/sessions" . getcwd()
+  if (filewritable(b:sessiondir) != 2)
+    exe 'silent !mkdir -p ' b:sessiondir
+    redraw!
+  endif
+  let b:filename = b:sessiondir . '/session.vim'
+  exe "mksession! " . b:filename
+endfunction
+
+function! LoadSession()
+  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  let b:sessionfile = b:sessiondir . "/session.vim"
+  if (filereadable(b:sessionfile))
+    exe 'source ' b:sessionfile
+  else
+    echo "No session loaded."
+  endif
+endfunction
+
 command! Indent normal! mggg=G`g
 
 let g:original_window_title = system("xdotool getactivewindow getwindowname")

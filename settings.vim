@@ -1,4 +1,6 @@
 set cmdheight=1
+set number
+set relativenumber
 " Smart auto indentation
 set autoindent smartindent
 
@@ -12,19 +14,34 @@ set softtabstop=-1
 " Better splits in debug mode
 let g:termdebug_wide=1
 
-" set number
 set numberwidth=2
 " set signcolumn=yes
-" set relativenumber
 " set nowrap
 
 " Switch to window if buffer is already open in it
 set switchbuf=useopen
 " set foldmethod=indent
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+set foldmethod=indent
 
-" set foldtext=MyFoldText()
+" Fold, gets it's own section  ----------------------------------------------{{{
+function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines')
+    " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines   ')
+    let fillcharcount = windowwidth - len(line)
+    " return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . ' Lines'
+    return line . ' ' . '...'. repeat(" ",fillcharcount)
+endfunction " }}}
+set foldtext=MyFoldText()
 
 set foldnestmax=5
 set foldlevel=3

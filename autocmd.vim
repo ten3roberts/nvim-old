@@ -4,8 +4,9 @@ au TermOpen * setlocal nonumber norelativenumber
 
 " Set window title to current working directory
 autocmd DirChanged,VimEnter * call system('set_title Neovim\ `pwd | sed "s|$HOME|~|"`')
-autocmd DirChanged,VimEnter * call luaeval('require "project_conf".load()')
+autocmd DirChanged * call LoadSession()
 autocmd VimLeave * call system("set_title " . g:original_window_title)
+autocmd VimLeave * call MakeSession()
 
 " Remember last position in file
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -16,6 +17,8 @@ autocmd VimEnter * let g:licenses_authors_name = system("git config user.name") 
 augroup Filetypes
   autocmd!
   " Remove continuation of comments with o and O
+  autocmd FileType * set formatoptions-=o
+
   autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 
   autocmd FileType fugitive map <buffer> <Tab> =

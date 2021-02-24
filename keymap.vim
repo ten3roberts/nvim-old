@@ -59,7 +59,7 @@ command! Cd cd %:p:h
 
 " ========================================
 " Location list
-nnoremap <leader>l :lopen<CR> | wincmd p
+nnoremap <leader>l :lopen<CR>
 nnoremap <leader>j :lnext<CR>
 nnoremap <leader>k :lprev<CR>
 
