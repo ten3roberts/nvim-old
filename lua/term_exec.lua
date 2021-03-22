@@ -1,7 +1,19 @@
-local toggleterm = require "toggleterm"
 local config = require "project_conf"
 
 local M = {}
+
+local
+
+function M.execute(command)
+  local expanded = {}
+  for v in command:gmatch("%S+") do
+    expanded[#expanded+1]  = vim.fn.expand(v)
+  end
+
+  local command = table.concat(command)
+
+  print("Executing command: ", command)
+end
 
 local commands = {
     build=nil,
@@ -14,10 +26,11 @@ end
 
 -- Runs a given command
 -- Expands all arguments, I.e; '%' will be replaced by current file
-function M.exec(name)
+function M.exec_command(name)
     local command = config.get("commands")[name] or commands[name]
 
-    vim.fn.execute(":wa")
+
+    vim.cmd(":wa")
 
     if not command then
         print(string.format("Undefined term command '%s'", name))
@@ -29,7 +42,7 @@ function M.exec(name)
         full_command[#full_command+1] = vim.fn.expand(v)
     end
 
-    toggleterm.exec(table.concat(full_command, ' '), 1)
+    local command = table.concat(full_coommand, ' ')
 end
 
 function M.set(name, command)

@@ -21,7 +21,7 @@ let g:completion_confirm_key = ""
 
 " autocmd BufEnter * 
 imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
-\ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<Plug>(PearTreeExpand)" :  "\<Plug>(PearTreeExpand)"
+      \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<Plug>(PearTreeExpand)" :  "\<Plug>(PearTreeExpand)"
 " imap <expr> <CR> pumvisible() ? "\<C-y><CR>" : "<CR>"
 
 let g:completion_enable_auto_popup = 1
@@ -32,11 +32,25 @@ let g:completion_sorting = "length"
 let g:completion_matching_strategy_list = ['exact', 'substring']
 
 let g:completion_matching_smart_case = 1
-
-let g:completion_auto_change_source = 1
+let g:completion_auto_change_source = 0
 
 let g:completion_chain_complete_list = {
       \ 'default': [
-      \{'complete_items': [ 'lsp' ]},
-      \{'complete_items': [ 'path', 'buffer' ]}
+      \{'complete_items': [ 'lsp', 'path', 'buffer' ]}
       \]}
+
+let g:completion_items_priority = {
+      \ 'Field': 5,
+      \ 'Function': 7,
+      \ 'Variables': 7,
+      \ 'Method': 10,
+      \ 'Interfaces': 5,
+      \ 'Constant': 5,
+      \ 'Class': 5,
+      \ 'Keyword': 4,
+      \ 'UltiSnips' : 1,
+      \ 'vim-vsnip' : 0,
+      \ 'Buffers' : 1,
+      \ 'TabNine' : 0,
+      \ 'File' : 0,
+      \}

@@ -12,18 +12,24 @@ noremap <silent> k gk
 " noremap <silent> <C-d> }
 
 " Jump to beginning and end of line in insert mode
-inoremap <C-e> <Esc>A
-noremap <C-e> <Esc>A
-inoremap <C-b> <Esc>I
+inoremap <C-e> <C-o>$
+noremap <C-e> $
 
-" Window only but keep nerdtree
-nnoremap <C-w>o :Only<CR>
+inoremap <C-b> <C-o>^
+noremap <C-b> 0
 
-noremap <C-k> {
-noremap <C-j> }
+" Window only but keep tree
+" nmap <C-w>o :wincmd o \| :NvimTreeOpen<CR>
 
 " Select all text
 nnoremap vA ggVG
+
+" " Replace f and t with multiline variant
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F
+" map t <Plug>Sneak_t
+" map T <Plug>Sneak_T
+
 " ===============================================================================
 " Tabs
 
@@ -57,86 +63,98 @@ nnoremap <silent><Esc> :noh<return><Esc>
 
 command! Cd cd %:p:h
 
+
+" ========================================
+" Quickfix list
+nnoremap <leader>co :copen<CR>
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprev<CR>
+
 " ========================================
 " Location list
 nnoremap <leader>l :lopen<CR>
 nnoremap <leader>j :lnext<CR>
 nnoremap <leader>k :lprev<CR>
 
-" Windows
-" Remap window controls to leader+w
-" nnoremap <leader>ww <C-w>w
-" nnoremap <leader>wv <C-w>v<C-w>l
-" nnoremap <leader>ws <C-w>s<C-w>j
-" Window Movement
-" nnoremap <leader>wh <C-w>h
-" nnoremap <leader>wj <C-w>j
-" nnoremap <leader>wk <C-w>k
-" nnoremap <leader>wl <C-w>l
-
-" nnoremap <leader>wo <C-w>o
-
-" Window swapping
-" nnoremap <leader>wH <C-w>H
-" nnoremap <leader>wJ <C-w>J
-" nnoremap <leader>wK <C-w>K
-" nnoremap <leader>wL <C-w>L
-" nnoremap <leader>wq <C-w>q
-
-" Switch windows directionally with C-direction
-" nnoremap <C-J> <C-W>j
-" nnoremap <C-K> <C-W>k
-" nnoremap <C-L> <C-W>l
-" nnoremap <C-H> <C-W>h
-
-" inoremap <C-J> <Esc><C-W>j
-" inoremap <C-K> <Esc><C-W>k
-" inoremap <C-L> <Esc><C-W>l
-" inoremap <C-H> <Esc><C-W>h
-
-" Swap order in lists
+" Swap order in lists and arguments
 nnoremap <A-h> :SidewaysLeft<cr>
 nnoremap <A-l> :SidewaysRight<cr>
 
 " =================================================================
 " Buffers
-nnoremap <silent> <leader>bk :Kwbd<CR>
-nnoremap <silent> <leader>bo :BufOnly<CR>
+" Move to previous/next
+nnoremap <silent>    <A-,> :BufferPrevious<CR>
+nnoremap <silent>    <A-.> :BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
+nnoremap <silent>    <A->> :BufferMoveNext<CR>
+" Goto buffer in position...
+nnoremap <silent>    <A-1> :BufferGoto 1<CR>
+nnoremap <silent>    <A-2> :BufferGoto 2<CR>
+nnoremap <silent>    <A-3> :BufferGoto 3<CR>
+nnoremap <silent>    <A-4> :BufferGoto 4<CR>
+nnoremap <silent>    <A-5> :BufferGoto 5<CR>
+nnoremap <silent>    <A-6> :BufferGoto 6<CR>
+nnoremap <silent>    <A-7> :BufferGoto 7<CR>
+nnoremap <silent>    <A-8> :BufferGoto 8<CR>
+nnoremap <silent>    <A-9> :BufferLast<CR>
+" Close buffer
+nnoremap <silent>    <A-c> :BufferClose<CR>
+nnoremap <silent>    <leader>bk :BufferClose<CR>
+nnoremap <silent>    <leader>bo :BufferCloseAllButCurrent<CR>
+" Wipeout buffer
+"                          :BufferWipeout<CR>
+" Close commands
+"                          :BufferCloseAllButCurrent<CR>
+"                          :BufferCloseBuffersLeft<CR>
+"                          :BufferCloseBuffersRight<CR>
+" Magic buffer-picking mode
 
-" ===============================================================================
-"  Netrw
+" =================================================================
+" Tree explorer
+nnoremap <leader>f :NvimTreeFindFile<CR>
+nnoremap <leader>pe :NvimTreeToggle<CR>
 
-nnoremap <leader>pv :Lexplore<CR>
-nnoremap <leader>ps :Sexplore<CR>
-nnoremap <leader>pe :Explore<CR>
-
-nnoremap <leader>f :NERDTreeFind<CR>
-
+" Fix gx
+" nnoremap gx :call system("xdg-open " . expand("<cWORD>"))
 " For us swedes
 noremap å <C-^>
 
+
+" Better gx
+nnoremap gx :call HandleURL()<cr>
+" Why wouldn't gf use column if available
+nnoremap gf gF
+nnoremap gF gf
+
+
 " Prevent x from touching the registers
 noremap x "_x
-noremap <leader>yc :let @*=@"<CR>
-
+" Copy top of reg to clipboard
+noremap <leader>yc :let @+=@"<CR>
 
 " ===============================================================================
 " Terminal
 " Open terminal with or without prefix with leader t
-nnoremap <silent><leader>t :<C-u>exe v:count1 . "ToggleTerm"<CR>
-" ===============================================================================
+nnoremap <silent><leader>t :BufTermToggle<CR>
+nnoremap <silent><C-t> :BufTermToggle<CR>
+tnoremap <silent><C-\><C-t> <C-\><C-n>:BufTermToggle<CR>
+nnoremap <silent><C-\><C-t> :BufTermToggle<CR>
+" ==============================================================================
 " Terminal Execs
-nnoremap <leader>eb <cmd>lua require "term_exec".exec("build")<CR>
-nnoremap <leader>er <cmd>lua require "term_exec".exec("run")<CR>
-nnoremap <leader>et <cmd>lua require "term_exec".exec("test")<CR>
+nnoremap <leader>eb <cmd>lua require "project_conf".exec_command("build")<CR>
+nnoremap <leader>er <cmd>lua require "project_conf".exec_command("run")<CR>
+nnoremap <leader>et <cmd>lua require "project_conf".exec_command("test")<CR>
+
+command! ProjectConf lua require "project_conf".overview()<CR>
 
 " ===============================================================================
-" Vim Fugitive
+" Fugitive
 nnoremap <silent><leader>gg  :Ge :<CR>
 nnoremap <silent><leader>ga. :Git add %<CR>
 nnoremap         <leader>gK  :Git checkout -b<space>
 " nnoremap         <leader>gf  :Gpull<CR>
-nnoremap         <leader>gpp :Gpush<CR>
+nnoremap         <leader>gpp :G push<CR>
 nnoremap         <leader>gpu :Git push -u origin <CR>
 nnoremap         <leader>gf  :G pull<CR>
 " Commit current file
@@ -146,14 +164,12 @@ nnoremap <silent><leader>gd  :Gvdiffsplit<CR>
 
 " ===============================================================================
 " GitGutter and GitMessneger
-
-nnoremap <silent><leader>gm     :GitMessenger<CR>
+nnoremap <silent><leader>gm :GitMessenger<CR>
 
 " GitGutter:
 nnoremap <silent><leader>hs :GitGutterStageHunk<CR>
 nnoremap <silent><leader>hv :GitGutterPreviewHunk<CR>
-"Confirm with enter
-nnoremap <leader>hx         :GitGutterUndoHunk
+nnoremap <leader>hx         :GitGutterUndoHunk<CR>
 nnoremap <silent>[h         :GitGutterPrevHunk<CR>
 nnoremap <silent>]h         :GitGutterNextHunk<CR>
 
@@ -161,12 +177,12 @@ nnoremap <leader>hp         :GitGutterPrevHunk<CR>
 nnoremap <leader>hn         :GitGutterNextHunk<CR>
 
 " ===============================================================================
-" fzf
-
+" FZF
 noremap <leader><leader> :call FZFOpen(':Files')<CR>
 noremap <leader>,        :call FZFOpen(':Buffers')<CR>
 noremap <C-p>            :call FZFOpen(':Buffers')<CR>
 noremap <leader>rg       :call FZFOpen(':Rg')<CR>
+" noremap <C-k><C-t>       :Colors<CR>
 noremap <leader>gl       :call FZFOpen(':Commits')<CR>
 noremap <leader>/        :call FZFOpen(':BLines')<CR>
 noremap <A-x>            <Esc>:call FZFOpen(':Commands')<CR>
@@ -180,7 +196,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-
 " Surround line with { and }
 nnoremap  g{   m`o}<esc><lt><lt>kkA<Space>{<esc>``
 
@@ -192,20 +207,10 @@ nnoremap <leader>cf :Neoformat<CR>
 nnoremap <silent> <leader>o  :call FZFOpen(':Symbols')<CR>
 nnoremap <silent> <leader>O :call FZFOpen(':WorkspaceSymbols')<CR>
 
-
-" ===============================================================================
-" Folds, scroll
-
 " Mappings to easily toggle fold levels
 nnoremap z0 :set foldlevel=0<CR>
 nnoremap z1 :set foldlevel=1<CR>
 nnoremap z2 :set foldlevel=2<CR>
 nnoremap z3 :set foldlevel=3<CR>
-nnoremap z4 :set foldlevel=4<CR>
-nnoremap z5 :set foldlevel=5<CR>
-nnoremap z6 :set foldlevel=6<CR>
-nnoremap z7 :set foldlevel=7<CR>
-nnoremap z8 :set foldlevel=8<CR>
-nnoremap z9 :set foldlevel=9<CR>
-nnoremap z- :set foldlevel-=1 <Bar> call Info('&foldlevel =', &foldlevel)<CR>
-nnoremap z+ :set foldlevel+=1 <Bar> call Info('&foldlevel =', &foldlevel)<CR>
+nnoremap z- :set foldlevel-=1<CR>
+nnoremap z= :set foldlevel+=1<CR>

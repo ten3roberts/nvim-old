@@ -1,53 +1,38 @@
 let termFtToIgnore = ['fzf']
-au TermEnter * if index(termFtToIgnore, &ft) < 0 | tnoremap <buffer> <Esc> <c-\><c-n>
-au TermOpen * setlocal nonumber norelativenumber
+au TermEnter * if empty(&filetype) | tnoremap <buffer> <Esc> <c-\><c-n>
+
+" Remove numbers in terminal
+" au TermOpen * setlocal nonumber norelativenumber
 
 " Set window title to current working directory
-autocmd DirChanged,VimEnter * call system('set_title Neovim\ `pwd | sed "s|$HOME|~|"`')
-autocmd DirChanged * call LoadSession()
-autocmd VimLeave * call system("set_title " . g:original_window_title)
-autocmd VimLeave * call MakeSession()
+au DirChanged,VimEnter * call luaeval('require "project_conf".load()')
+au Filetype,BufEnter * call luaeval('require "project_conf".load_for_ft()')
 
 " Remember last position in file
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-autocmd VimEnter * let g:licenses_authors_name = system("git config user.name") |
-      \let g:licenses_copyright_holders_name = g:licenses_authors_name
+" Remove continuation of comments with o and O
+au FileType * set formatoptions-=o
+au FileType NvimTree setlocal signcolumn=no statusline=\%#Keyword#Explorer
 
-augroup Filetypes
-  autocmd!
-  " Remove continuation of comments with o and O
-  autocmd FileType * set formatoptions-=o
+" Associate .h files with C and not C++
+au BufRead,BufNewFile *.h,*.c set filetype=c
 
-  autocmd BufRead,BufNewFile *.h,*.c set filetype=c
+" Fugitive tab expand and collapse
+au FileType fugitive map <buffer> <Tab> =
 
-  autocmd FileType fugitive map <buffer> <Tab> =
+" Auto set compiler for filetypes
+au FileType rust :compiler cargo
 
-  autocmd BufEnter,FileType * call luaeval('require "term_exec".set_ft()')
+" Auto format some filetypes
+au BufWritePre *.rs silent! Neoformat
+au Filetype rust let g:termdebugger='rust-gdb'
 
-  autocmd FileType c,markdown,nim,rust set textwidth=80
+au FileType markdown set textwidth=60
 
-  autocmd BufWritePre *.rs silent! Neoformat
-
-  autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
-  " Enable type inlay hints
-  " autocmd InsertLeave,BufEnter,BufWritePost *.rs
-  "       \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
-augroup end
-
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'LuaTreeOpen' | endif
-
-" augroup SaveSession
-"     autocmd!
-"     autocmd VimLeave * call SaveCurrentSession()
-" augroup end
+au CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 " Create directories to save file
-augroup Mkdir
-  autocmd!
-  autocmd BufWritePre * silent! if (&buftype == "") | call mkdir(expand("<afile>:p:h"), "p") | endif
-augroup end
+au BufWritePre * silent! if (&buftype == "") | call mkdir(expand("<afile>:p:h"), "p") | endif
 
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
+au InsertLeave,BufWrite,BufEnter * :call LspLocationList() 

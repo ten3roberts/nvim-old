@@ -7,7 +7,7 @@ let g:fzf_action = {
 
 " Prevents files from opening in tree split
 function! FZFOpen(command_str)
-    if (&filetype =~# 'nerdtree' && winnr('$') > 1)
+    if (&filetype =~# 'NvimTree' && winnr('$') > 1)
         exe "normal! \<C-w>\<C-l>"
     endif
     exe 'normal! ' . a:command_str . "\<CR>"
@@ -20,16 +20,17 @@ endfunction
 " [Tags] Command to generate tags file
 let g:fzf_tags_command = 'ctags -R'
 
-let $FZF_DEFAULT_COMMAND="rg --files"
-" function! s:list_cmd()
-"   let base = fnamemodify(expand('%'), ':h:.:S')
-"   return base == '.' ? 'rg --files' : printf('rg --files | proximity-sort %s', expand('%'))
-" endfunction
+" let $FZF_DEFAULT_COMMAND="rg --files"
+
+" Favor files closer to current file
+function! s:list_cmd()
+  let base = fnamemodify(expand('%'), ':h:.:S')
+  return base == '.' ? 'rg --files' : printf('rg --files | proximity-sort %s', expand('%'))
+endfunction
 
 " Pass an empty option dictionary if the screen is narrow
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, &columns > 80 ? fzf#vim#with_preview() : {}, <bang>0)
-
 
 command! -bang -nargs=? -complete=dir Buffers
   \ call fzf#vim#buffers(<q-args>, &columns > 80 ? fzf#vim#with_preview() : {}, <bang>0)
