@@ -139,9 +139,9 @@ local servers = {
 
   function M.statusline()
     -- Diagnostics are not for this buffer
-    if M.current_buf ~= vim.api.nvim_get_current_buf() then
-      return ""
-    end
+    -- if M.current_buf ~= vim.api.nvim_get_current_buf() then
+    --   return ""
+    -- end
 
     if M.info_count > 0 or M.hint_count > 0 then
       return string.format("E: %-2d W: %-2d I: %-2d H: %-2d", M.error_count, M.warning_count, M.info_count, M.hint_count)

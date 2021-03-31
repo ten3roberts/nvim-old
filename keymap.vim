@@ -67,6 +67,7 @@ command! Cd cd %:p:h
 " ========================================
 " Quickfix list
 nnoremap <leader>co :copen<CR>
+nnoremap <leader>cc :cclose<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
 

@@ -1,16 +1,17 @@
 call plug#begin('~/.vim/plugged')
 
-Plug  'junegunn/goyo.vim'
 Plug 'AndrewRadev/sideways.vim' " Move function arguments
 Plug 'airblade/vim-gitgutter' " Show git info in gutter
 Plug 'airblade/vim-rooter' " Autocd to project root
 Plug 'dkarter/bullets.vim'
 Plug 'drmikehenry/vim-headerguard' "Add header guards to C files
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview in browser
 Plug 'itmecho/bufterm.nvim' " Toggleable terminals
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy searching and finding
 Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -21,6 +22,8 @@ Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object' " Adds selection by indent
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'psliwka/vim-smoothie' " Smooth scrolling
+Plug 'qxxxb/vim-searchhi'
+Plug 'rafamadriz/friendly-snippets'
 Plug 'rhysd/git-messenger.vim' " Blame current line
 Plug 'romgrk/barbar.nvim'
 Plug 'roryokane/detectindent' " Indent detection

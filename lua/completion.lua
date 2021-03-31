@@ -3,7 +3,7 @@ require'compe'.setup {
   autocomplete = true;
   debug = false;
   min_length = 2;
-  preselect = 'enable';
+  preselect = 'disable';
   throttle_time = 80;
   source_timeout = 200;
   incomplete_delay = 400;
@@ -23,6 +23,7 @@ require'compe'.setup {
 }
 
 vim.o.completeopt = "menuone,noselect"
+vim.o.pumheight = 16
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)

@@ -4,7 +4,8 @@ set relativenumber
 " Smart auto indentation
 set autoindent smartindent
 
-
+set noshowmode
+set shortmess+=c
 set ignorecase
 set smartcase
 
@@ -82,6 +83,8 @@ let g:Hexokinase_highlighters = [
 
 let g:Hexokinase_refreshEvents = ['BufRead', 'BufWrite', 'InsertLeave', "TextChanged"]
 
+let g:Hexokinase_termDisabled = 1
+
 " Auto closing/matching rules
 let g:pear_tree_pairs = {
       \ '(': {'closer': ')'},
@@ -122,7 +125,8 @@ sign define LspDiagnosticsSignHint text=. texthl=LspDiagnosticsSignHint linehl= 
 let g:nvim_tree_side = 'left' "left by default
 let g:nvim_tree_width = 29 "30 by default
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
-let g:nvim_tree_auto_open = 0 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+let g:nvim_tree_auto_ignore_ft = [ 'startify' ]
+let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
 let g:nvim_tree_auto_close = 0 "0 by default, closes the tree when it's the last window
 let g:nvim_tree_quit_on_open = 0 "0 by default, closes the tree when you open a file
 let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
