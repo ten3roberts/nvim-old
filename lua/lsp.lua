@@ -139,9 +139,9 @@ local servers = {
 
   function M.statusline()
     -- Diagnostics are not for this buffer
-    -- if M.current_buf ~= vim.api.nvim_get_current_buf() then
-    --   return ""
-    -- end
+    if M.current_buf ~= vim.api.nvim_get_current_buf() then
+      return ""
+    end
 
     if M.info_count > 0 or M.hint_count > 0 then
       return string.format("E: %-2d W: %-2d I: %-2d H: %-2d", M.error_count, M.warning_count, M.info_count, M.hint_count)
@@ -187,7 +187,7 @@ local servers = {
     local buffer_diags = vim.lsp.diagnostic.get(bufnr, nil)
 
     -- Keep track of number of errors and warnings
-    M.current_buf = bufnr
+    M.current_buf = vim.api.nvim_get_current_buf()
     M.error_count = diagnostic_count("Error", buffer_diags)
     M.warning_count = diagnostic_count("Warning", buffer_diags)
     M.info_count = diagnostic_count("Information", buffer_diags)
