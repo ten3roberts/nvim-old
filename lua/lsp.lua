@@ -199,7 +199,10 @@ local servers = {
     -- Enable underline, use default values
     underline = true,
     -- Enable virtual text, override spacing to 2
-    virtual_text = false,
+    virtual_text = {
+      spacing = 4,
+      prefix = '~',
+    },
 
     signs = true,
 
