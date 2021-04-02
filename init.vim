@@ -53,9 +53,6 @@ Plug 'sainnhe/sonokai'
 
 call plug#end()
 
-let g:sonokai_style = 'andromeda'
-let g:sonokai_enable_italic = 1
-
 let $PAGER=''
 let s:rcpath = expand('<sfile>:p:h')
 let g:vimrc = expand('<sfile>:p')
@@ -84,15 +81,20 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" let g:gruvbox_contrast_dark = "hard"
+let g:sonokai_style = 'andromeda'
+let g:sonokai_enable_italic = 1
+
 let g:gruvbox_sign_column="bg0"
 let g:gruvbox_contrast_dark="hard"
+
+" Default colorscheme
 if empty($VIM_COLORSCHEME)
-  let $VIM_COLORSCHEME="one"
+  let $VIM_COLORSCHEME="nord"
 endif
 
 " let g:gruvbox_vert_split="bg1"
 colorscheme $VIM_COLORSCHEME
+
 packadd termdebug
 
 call s:load('keymap.vim')
