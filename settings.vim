@@ -190,7 +190,7 @@ let g:startify_session_persistence = 1
 let g:startify_custom_header = 'startify#center(startify#fortune#boxed())'
 let g:startify_bookmarks = [ 
       \{ 't': '~/tasks.md' }, 
-      \{ 'n': '~/.config/nvim/init.vim' } 
+      \{ 'n': '~/.config/nvim/init.vim' },
       \{ 'v': '~/dev/rust/vulkan-sandbox' } 
       \]
 
