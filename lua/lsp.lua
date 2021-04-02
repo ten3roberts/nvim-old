@@ -12,7 +12,7 @@ local servers = {
           -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
           version = 'Lua',
           -- Setup your lua path
-            path = "/usr/bin/lua"
+          path = "/usr/bin/lua"
         },
         diagnostics = {
           -- Get the language server to recognize the `vim` global
@@ -154,8 +154,7 @@ local servers = {
 
   local custom_attach = function(client)
     print("LSP started")
-    -- require'completion'.on_attach(client)
-    -- require'diagnostic'.on_attach(client)
+    require'lsp_signature'.on_attach()
 
     map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
     map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
@@ -174,7 +173,7 @@ local servers = {
     map("n", "<leader>k", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
     map("n", "<leader>j", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
     map("n", "<leader>l", "<cmd>lua vim.lsp.diagnostic.set_loclist({severity_limit = 'Warning'})<CR>")
-    -- map('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+    map('n','<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
     -- map("n", "<leader>ai", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
     -- map("n", "<leader>ao", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
   end

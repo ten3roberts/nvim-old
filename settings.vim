@@ -27,7 +27,7 @@ if executable("rg")
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-" set nowrap
+set nowrap
 
 " Switch to window if buffer is already open in it
 set switchbuf=useopen
@@ -55,7 +55,9 @@ endfunction " }}}
 set foldtext=MyFoldText()
 
 set foldnestmax=4
+set nofoldenable
 set foldlevel=2
+
 set scrolloff=5
 set updatetime=500
 
@@ -76,6 +78,17 @@ let showbreak='++'
 set splitright
 set splitbelow
 
+" Better searching
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
+" Hexokinase
 let g:Hexokinase_highlighters = [
       \   'virtual',
       \   'backgroundfull'
@@ -175,7 +188,12 @@ let g:sneak#s_next = 1
 " Startify
 let g:startify_session_persistence = 1
 let g:startify_custom_header = 'startify#center(startify#fortune#boxed())'
-let g:startify_bookmarks = [ { 't': '~/tasks.md' }, { 'n': '~/.config/nvim/init.vim' } ]
+let g:startify_bookmarks = [ 
+      \{ 't': '~/tasks.md' }, 
+      \{ 'n': '~/.config/nvim/init.vim' } 
+      \{ 'v': '~/dev/rust/vulkan-sandbox' } 
+      \]
+
 let g:startify_files_number = 10
 let g:startify_lists = [
       \ { 'type': 'dir',       'header': ['   Recent - '. getcwd()] },
