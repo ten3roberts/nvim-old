@@ -27,7 +27,7 @@ if executable("rg")
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-" set nowrap
+set nowrap
 
 " Switch to window if buffer is already open in it
 set switchbuf=useopen
@@ -56,6 +56,7 @@ set foldtext=MyFoldText()
 
 set foldnestmax=4
 set foldlevel=2
+set nofoldenable
 set scrolloff=5
 set updatetime=500
 

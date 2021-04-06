@@ -12,8 +12,6 @@ Plug 'itmecho/bufterm.nvim' " Toggleable terminals
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy searching and finding
 Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align' " Align text
 Plug 'justinmk/vim-sneak' " Like t and f but accepts two characters
@@ -25,6 +23,8 @@ Plug 'psliwka/vim-smoothie' " Smooth scrolling
 Plug 'qxxxb/vim-searchhi'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'rhysd/git-messenger.vim' " Blame current line
+Plug 'romainl/vim-qf'
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'romgrk/barbar.nvim'
 Plug 'roryokane/detectindent' " Indent detection
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Colorize color codes (required Go)
@@ -76,6 +76,46 @@ function! HandleURL()
   endif
 endfunction
 
+function! LocVisible()
+  return len(filter(getwininfo(), {i,v -> v.loclist}))
+endfunc
+
+function! LocLine()
+  let curLine = line(".")
+  if exists("b:lastLine") && b:lastLine == curLine
+    return
+  endif
+
+  let b:lastLine = line(".")
+  let ent = len(filter(getloclist("."), {i,v -> v.lnum <= curLine}))
+  if ent < 1 || (exists("b:lastEntry") && b:lastEntry == ent)
+    return
+  endif
+
+  let b:lastEntry = ent
+  let pos = [ 0, curLine, col("."), 0 ]
+  exe "ll ".ent
+  call setpos(".", pos)
+endfunc
+
+function! LocPrev()
+  let curLine = line(".")
+  if exists("b:lastLine") && b:lastLine == curLine
+    return
+  endif
+
+  let b:lastLine = line(".")
+  let ent = len(filter(getloclist("."), {i,v -> v.lnum < curLine}))
+
+  " Wrap
+  if ent < 1
+    llast
+    return
+  endif
+
+  exe "ll ".ent
+endfunc
+
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -84,7 +124,7 @@ endif
 let g:gruvbox_sign_column="bg0"
 let g:gruvbox_contrast_dark="hard"
 if empty($VIM_COLORSCHEME)
-  let $VIM_COLORSCHEME="one"
+  let $VIM_COLORSCHEME="nord"
 endif
 
 " let g:gruvbox_vert_split="bg1"

@@ -59,23 +59,42 @@ vnoremap <A-j> :m '>+1<CR>gv
 vnoremap <A-k> :m '<-2<CR>gv
 
 " Clear last used search pattern
-nnoremap <silent><Esc> :noh<return><Esc>
+map <silent><Esc> <Plug>(searchhi-clear-all)
 
 command! Cd cd %:p:h
 
-
 " ========================================
 " Quickfix list
-nnoremap <leader>co :copen<CR>
-nnoremap <leader>cc :cclose<CR>
-nnoremap <C-j> :cnext<CR>
-nnoremap <C-k> :cprev<CR>
+nmap <silent> <leader>co <Plug>(qf_qf_switch)
+nmap <silent> <C-j> <Plug>(qf_qf_next)
+nmap <silent> <C-k> <Plug>(qf_qf_previous)
 
 " ========================================
 " Location list
-nnoremap <leader>l :lopen<CR>
-nnoremap <leader>j :lnext<CR>
-nnoremap <leader>k :lprev<CR>
+nmap <silent> <leader>l :lopen 7<CR>
+nmap <silent> <leader>c :lclose <bar> :cclose<CR>
+nmap <silent> <leader>j :silent call LocLine() <bar> :call qf#wrap#WrapCommand('down', 'l')<CR>
+nmap <silent> <leader>k :call LocPrev()<CR>
+
+" ========================================
+" Search highlighting
+nmap n <Plug>(searchhi-n)
+nmap N <Plug>(searchhi-N)
+nmap * <Plug>(searchhi-*)
+nmap g* <Plug>(searchhi-g*)
+nmap # <Plug>(searchhi-#)
+nmap g# <Plug>(searchhi-g#)
+nmap gd <Plug>(searchhi-gd)
+nmap gD <Plug>(searchhi-gD)
+
+vmap n <Plug>(searchhi-v-n)
+vmap N <Plug>(searchhi-v-N)
+vmap * <Plug>(searchhi-v-*)
+vmap g* <Plug>(searchhi-v-g*)
+vmap # <Plug>(searchhi-v-#)
+vmap g# <Plug>(searchhi-v-g#)
+vmap gd <Plug>(searchhi-v-gd)
+vmap gD <Plug>(searchhi-v-gD)
 
 " Swap order in lists and arguments
 nnoremap <A-h> :SidewaysLeft<cr>
@@ -213,5 +232,11 @@ nnoremap z0 :set foldlevel=0<CR>
 nnoremap z1 :set foldlevel=1<CR>
 nnoremap z2 :set foldlevel=2<CR>
 nnoremap z3 :set foldlevel=3<CR>
+nnoremap z4 :set foldlevel=4<CR>
+nnoremap z5 :set foldlevel=5<CR>
+nnoremap z6 :set foldlevel=6<CR>
+nnoremap z7 :set foldlevel=7<CR>
+nnoremap z8 :set foldlevel=8<CR>
+nnoremap z9 :set foldlevel=9<CR>
 nnoremap z- :set foldlevel-=1<CR>
 nnoremap z= :set foldlevel+=1<CR>

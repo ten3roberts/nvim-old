@@ -25,12 +25,12 @@ let g:fzf_tags_command = 'ctags -R'
 " Favor files closer to current file
 function! s:list_cmd()
   let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ? 'rg --files' : printf('rg --files | proximity-sort %s', expand('%'))
+  return base == '.' ? 'fd -t f' : printf('fd -t f | proximity-sort %s', expand('%'))
 endfunction
 
-" Pass an empty option dictionary if the screen is narrow
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, &columns > 80 ? fzf#vim#with_preview() : {}, <bang>0)
+  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
+  \                               'options': '--tiebreak=index'}, <bang>0)
 
 command! -bang -nargs=? -complete=dir Buffers
   \ call fzf#vim#buffers(<q-args>, {}, <bang>0)

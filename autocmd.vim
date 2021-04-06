@@ -30,9 +30,9 @@ au Filetype rust let g:termdebugger='rust-gdb'
 
 au FileType markdown set textwidth=60
 
-au CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+" au CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 " Create directories to save file
 au BufWritePre * silent! if (&buftype == "") | call mkdir(expand("<afile>:p:h"), "p") | endif
 
-au InsertLeave,BufWrite,BufEnter * :call LspLocationList() 
+" au InsertLeave,BufWrite,BufEnter * :call LspLocationList() 
