@@ -58,7 +58,7 @@ set statusline+=%=
 set statusline+=%{StatuslineLSP()}
 set statusline+=\ %{&filetype}
 set statusline+=\ %{tabpagenr()}:%{tabpagenr('$')}
-set statusline+=\%#PMenuSel#
+set statusline+=\ %#PMenuSel#
 set statusline+=\ %p%%
 set statusline+=\ %#IncludeRev#
 set statusline+=\ %l:%c\ 
