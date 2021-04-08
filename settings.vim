@@ -1,6 +1,6 @@
 set cmdheight=1
-set number
-set relativenumber
+" set number
+" set relativenumber
 " Smart auto indentation
 set autoindent smartindent
 
@@ -27,7 +27,7 @@ if executable("rg")
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-set nowrap
+" set nowrap
 
 " Switch to window if buffer is already open in it
 set switchbuf=useopen
@@ -55,10 +55,10 @@ endfunction " }}}
 set foldtext=MyFoldText()
 
 set foldnestmax=4
-set foldlevel=2
+set foldlevel=10
 set nofoldenable
 set scrolloff=5
-set updatetime=500
+set updatetime=1000
 
 set path+=**
 
@@ -171,7 +171,7 @@ let g:nvim_tree_icons = {
 
 " vim-sneak
 let g:sneak#label = 1
-let g:sneak#s_next = 1
+let g:sneak#s_next = 0
 
 " Startify
 let g:startify_session_persistence = 1

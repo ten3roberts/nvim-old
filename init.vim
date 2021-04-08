@@ -17,19 +17,15 @@ Plug 'junegunn/vim-easy-align' " Align text
 Plug 'justinmk/vim-sneak' " Like t and f but accepts two characters
 Plug 'kyazdani42/nvim-tree.lua' " Tree file explorer plugin
 Plug 'mhinz/vim-startify'
-Plug 'michaeljsmith/vim-indent-object' " Adds selection by indent
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'psliwka/vim-smoothie' " Smooth scrolling
 Plug 'qxxxb/vim-searchhi'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'rhysd/git-messenger.vim' " Blame current line
 Plug 'romainl/vim-qf'
-Plug 'ray-x/lsp_signature.nvim'
 Plug 'romgrk/barbar.nvim'
-Plug 'roryokane/detectindent' " Indent detection
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Colorize color codes (required Go)
 Plug 'sbdchd/neoformat' " File formatting
-Plug 'schickling/vim-bufonly' " Close all but current buffer
 Plug 'ten3roberts/nim.vim'
 Plug 'tikhomirov/vim-glsl' " glsl file support
 Plug 'tmsvg/pear-tree' " Automatic closing of delimiters
@@ -42,13 +38,12 @@ Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
 
 Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'romgrk/nvim-treesitter-context'
 
 " Color schemes
 Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
 Plug 'sainnhe/sonokai'
 
 call plug#end()
@@ -87,24 +82,30 @@ function! LocLine()
   endif
 
   let b:lastLine = line(".")
-  let ent = len(filter(getloclist("."), {i,v -> v.lnum <= curLine}))
+  let l:bufnr = bufnr()
+  let ent = len(filter(getloclist("."), {i,v -> v.bufnr == l:bufnr && v.lnum <= curLine}))
   if ent < 1 || (exists("b:lastEntry") && b:lastEntry == ent)
     return
   endif
 
   let b:lastEntry = ent
   let pos = [ 0, curLine, col("."), 0 ]
+  echo ""
   exe "ll ".ent
   call setpos(".", pos)
 endfunc
 
 function! LocPrev()
   let curLine = line(".")
-  if exists("b:lastLine") && b:lastLine == curLine
+  if exists("b:lastLinePrev") && b:lastLinePrev == curLine
     return
   endif
 
-  let b:lastLine = line(".")
+  if len(getloclist(".")) == 0
+    return
+  endif
+
+  let b:lastLinePrev = line(".")
   let ent = len(filter(getloclist("."), {i,v -> v.lnum < curLine}))
 
   " Wrap
@@ -113,6 +114,7 @@ function! LocPrev()
     return
   endif
 
+  echo ""
   exe "ll ".ent
 endfunc
 
@@ -148,3 +150,6 @@ command! Indent normal! mggg=G`g
 command! Quit :wa | qa
 
 command! SucklessAlign normal gaip*{ gaip*, gaip*}
+
+" Less obtrusive context
+hi! link TreeSitterContext Normal

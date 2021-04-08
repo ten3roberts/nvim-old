@@ -71,7 +71,7 @@ nmap <silent> <C-k> <Plug>(qf_qf_previous)
 
 " ========================================
 " Location list
-nmap <silent> <leader>l :lopen 7<CR>
+nmap <silent> <leader>l :lopen 5<CR>
 nmap <silent> <leader>c :lclose <bar> :cclose<CR>
 nmap <silent> <leader>j :silent call LocLine() <bar> :call qf#wrap#WrapCommand('down', 'l')<CR>
 nmap <silent> <leader>k :call LocPrev()<CR>
@@ -105,9 +105,11 @@ nnoremap <A-l> :SidewaysRight<cr>
 " Move to previous/next
 nnoremap <silent>    <A-,> :BufferPrevious<CR>
 nnoremap <silent>    <A-.> :BufferNext<CR>
+
 " Re-order to previous/next
 nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
 nnoremap <silent>    <A->> :BufferMoveNext<CR>
+
 " Goto buffer in position...
 nnoremap <silent>    <A-1> :BufferGoto 1<CR>
 nnoremap <silent>    <A-2> :BufferGoto 2<CR>
@@ -118,10 +120,13 @@ nnoremap <silent>    <A-6> :BufferGoto 6<CR>
 nnoremap <silent>    <A-7> :BufferGoto 7<CR>
 nnoremap <silent>    <A-8> :BufferGoto 8<CR>
 nnoremap <silent>    <A-9> :BufferLast<CR>
+
 " Close buffer
 nnoremap <silent>    <A-c> :BufferClose<CR>
 nnoremap <silent>    <leader>bk :BufferClose<CR>
 nnoremap <silent>    <leader>bo :BufferCloseAllButCurrent<CR>
+nnoremap <silent>    <leader>bp :bp<CR>
+
 " Wipeout buffer
 "                          :BufferWipeout<CR>
 " Close commands
@@ -142,7 +147,7 @@ noremap å <C-^>
 
 
 " Better gx
-nnoremap gx :call HandleURL()<cr>
+nnoremap gx :call HandleURL()<CR>
 " Why wouldn't gf use column if available
 nnoremap gf gF
 nnoremap gF gf
@@ -160,6 +165,7 @@ nnoremap <silent><leader>t :BufTermToggle<CR>
 nnoremap <silent><C-t> :BufTermToggle<CR>
 tnoremap <silent><C-\><C-t> <C-\><C-n>:BufTermToggle<CR>
 nnoremap <silent><C-\><C-t> :BufTermToggle<CR>
+
 " ==============================================================================
 " Terminal Execs
 nnoremap <leader>eb <cmd>lua require "project_conf".exec_command("build")<CR>
@@ -180,7 +186,8 @@ nnoremap         <leader>gf  :G pull<CR>
 " Commit current file
 nnoremap         <leader>gcf :Gcommit %<CR>
 nnoremap <silent><leader>gd  :Gvdiffsplit<CR>
-
+nnoremap         <leader>g2  :diffget //2<CR>
+nnoremap         <leader>g3  :diffget //3<CR>
 
 " ===============================================================================
 " GitGutter and GitMessneger

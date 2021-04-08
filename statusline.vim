@@ -44,21 +44,21 @@ function! HiliteSwap(group, name)
 endfunction
 
 call HiliteSwap("String", "StringRev")
-call HiliteSwap("Keyword", "KeywordRev")
-call HiliteSwap("Include", "IncludeRev")
 
 set statusline=
 set statusline+=%#StringRev#
 set statusline+=\ %{StatuslineGit()}
 set statusline+=\ %#PMenuSel#
+" Filename
 set statusline+=\ %f
-set statusline+=\ %#DarkenedPanel#
+set statusline+=\ %#Number#
 set statusline+=%{StatuslineModified()}
+set statusline+=%#Normal#
 set statusline+=%=
-set statusline+=%{StatuslineLSP()}
+" LSP diagnostic
+set statusline+=%#Number#%{StatuslineLSP()}%#Normal#
 set statusline+=\ %{&filetype}
-set statusline+=\ %{tabpagenr()}:%{tabpagenr('$')}
 set statusline+=\ %#PMenuSel#
 set statusline+=\ %p%%
-set statusline+=\ %#IncludeRev#
+set statusline+=\ %#StringRev#
 set statusline+=\ %l:%c\ 

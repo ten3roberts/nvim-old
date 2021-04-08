@@ -4,7 +4,7 @@ require'compe'.setup {
   debug = false;
   min_length = 2;
   preselect = 'disable';
-  throttle_time = 80;
+  throttle_time = 200;
   source_timeout = 200;
   incomplete_delay = 400;
   max_abbr_width = 100;
@@ -52,6 +52,7 @@ _G.tab_complete = function()
     return vim.fn['compe#complete']()
   end
 end
+
 _G.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-p>"

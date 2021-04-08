@@ -1,9 +1,6 @@
 let termFtToIgnore = ['fzf']
 au TermEnter * if empty(&filetype) | tnoremap <buffer> <Esc> <c-\><c-n>
 
-" Remove numbers in terminal
-" au TermOpen * setlocal nonumber norelativenumber
-
 " Set window title to current working directory
 au DirChanged,VimEnter * call luaeval('require "project_conf".load()')
 au Filetype,BufEnter * call luaeval('require "project_conf".load_for_ft()')
@@ -31,6 +28,7 @@ au Filetype rust let g:termdebugger='rust-gdb'
 au FileType markdown set textwidth=60
 
 " au CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+au CursorHold * if LocVisible() | call LocLine() | endif
 
 " Create directories to save file
 au BufWritePre * silent! if (&buftype == "") | call mkdir(expand("<afile>:p:h"), "p") | endif
