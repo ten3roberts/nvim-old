@@ -11,6 +11,10 @@ noremap <silent> k gk
 " noremap <silent> <C-u> {
 " noremap <silent> <C-d> }
 
+" Sentence navigation with C-jk
+noremap <silent> <C-j> }
+noremap <silent> <C-k> {
+
 " Jump to beginning and end of line in insert mode
 inoremap <C-e> <C-o>$
 noremap <C-e> $
@@ -66,8 +70,8 @@ command! Cd cd %:p:h
 " ========================================
 " Quickfix list
 nmap <silent> <leader>co <Plug>(qf_qf_switch)
-nmap <silent> <C-j> <Plug>(qf_qf_next)
-nmap <silent> <C-k> <Plug>(qf_qf_previous)
+nmap <silent> <leader>J  <Plug>(qf_qf_next)
+nmap <silent> <leader>K  <Plug>(qf_qf_previous)
 
 " ========================================
 " Location list
@@ -247,3 +251,8 @@ nnoremap z8 :set foldlevel=8<CR>
 nnoremap z9 :set foldlevel=9<CR>
 nnoremap z- :set foldlevel-=1<CR>
 nnoremap z= :set foldlevel+=1<CR>
+
+" V Snippets
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'

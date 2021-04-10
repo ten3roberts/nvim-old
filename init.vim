@@ -33,6 +33,7 @@ Plug 'tpope/vim-abolish' " Smart text replacement and case coercion
 Plug 'tpope/vim-commentary' " Toggle comments
 Plug 'tpope/vim-eunuch' " Unix commands like renaming and moving current file
 Plug 'tpope/vim-fugitive' " Git integration
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround' " Surround with delimiters
 Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
 
@@ -152,4 +153,4 @@ command! Quit :wa | qa
 command! SucklessAlign normal gaip*{ gaip*, gaip*}
 
 " Less obtrusive context
-hi! link TreeSitterContext Normal
+" hi! link TreeSitterContext Normal

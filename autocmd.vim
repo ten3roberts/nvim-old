@@ -19,7 +19,7 @@ au BufRead,BufNewFile *.h,*.c set filetype=c
 au FileType fugitive map <buffer> <Tab> =
 
 " Auto set compiler for filetypes
-au FileType rust :compiler cargo
+au FileType rust :compiler! cargo
 
 " Auto format some filetypes
 au BufWritePre *.rs silent! Neoformat
