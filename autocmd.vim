@@ -10,7 +10,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " Remove continuation of comments with o and O
 au FileType * set formatoptions-=o
-au FileType NvimTree setlocal signcolumn=no statusline=\%#Keyword#Explorer
+au FileType,BufEnter NvimTree setlocal signcolumn=no statusline=\%#Keyword#Explorer
 
 " Associate .h files with C and not C++
 au BufRead,BufNewFile *.h,*.c set filetype=c

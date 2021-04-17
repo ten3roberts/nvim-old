@@ -56,7 +56,7 @@ set foldtext=MyFoldText()
 
 set foldnestmax=4
 set foldlevel=10
-set nofoldenable
+" set nofoldenable
 set scrolloff=5
 set updatetime=1000
 
@@ -126,7 +126,7 @@ sign define LspDiagnosticsSignHint text=. texthl=LspDiagnosticsSignHint linehl= 
 let g:nvim_tree_side = 'left' "left by default
 let g:nvim_tree_width = 29 "30 by default
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
-let g:nvim_tree_auto_ignore_ft = [ 'startify' ]
+" let g:nvim_tree_auto_ignore_ft = [ 'startify' ]
 let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
 let g:nvim_tree_auto_close = 0 "0 by default, closes the tree when it's the last window
 let g:nvim_tree_quit_on_open = 0 "0 by default, closes the tree when you open a file
@@ -172,6 +172,7 @@ let g:nvim_tree_icons = {
 " vim-sneak
 let g:sneak#label = 1
 let g:sneak#s_next = 0
+let g:sneak#target_labels = ";sftunq/FGHLTUNRMQZ?0" 
 
 " Startify
 let g:startify_session_persistence = 1
@@ -209,3 +210,5 @@ let bufferline.icons = v:false
 
 " Sets the maximum padding width with which to surround each tab
 let bufferline.maximum_padding = 2
+
+let g:qf_loclist_window_bottom = 0

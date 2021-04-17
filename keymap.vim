@@ -29,10 +29,10 @@ noremap <C-b> 0
 nnoremap vA ggVG
 
 " " Replace f and t with multiline variant
-" map f <Plug>Sneak_f
-" map F <Plug>Sneak_F
-" map t <Plug>Sneak_t
-" map T <Plug>Sneak_T
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " ===============================================================================
 " Tabs

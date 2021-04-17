@@ -45,6 +45,7 @@ Plug 'romgrk/nvim-treesitter-context'
 " Color schemes
 Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'sainnhe/sonokai'
 
 call plug#end()
@@ -107,7 +108,8 @@ function! LocPrev()
   endif
 
   let b:lastLinePrev = line(".")
-  let ent = len(filter(getloclist("."), {i,v -> v.lnum < curLine}))
+  let l:bufnr = bufnr()
+  let ent = len(filter(getloclist("."), {i,v -> v.bufnr == l:bufnr && v.lnum < curLine}))
 
   " Wrap
   if ent < 1
@@ -126,6 +128,7 @@ endif
 " let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_sign_column="bg0"
 let g:gruvbox_contrast_dark="hard"
+let g:palenight_terminal_italics=1
 if empty($VIM_COLORSCHEME)
   let $VIM_COLORSCHEME="nord"
 endif
