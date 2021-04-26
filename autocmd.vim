@@ -1,5 +1,5 @@
 let termFtToIgnore = ['fzf']
-au TermEnter * if empty(&filetype) | tnoremap <buffer> <Esc> <c-\><c-n>
+au TermEnter * if (&filetype != 'fzf') | tnoremap <buffer> <Esc> <c-\><c-n>
 
 au Filetype,BufEnter * call luaeval('require "project_conf".load_for_ft()')
 

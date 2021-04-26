@@ -8,7 +8,7 @@ Plug 'drmikehenry/vim-headerguard' "Add header guards to C files
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview in browser
-Plug 'itmecho/bufterm.nvim' " Toggleable terminals
+Plug 'akinsho/nvim-toggleterm.lua' " Toggleable terminals
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy searching and finding
 Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
 Plug 'junegunn/goyo.vim'

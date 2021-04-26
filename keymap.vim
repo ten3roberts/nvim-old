@@ -165,10 +165,7 @@ noremap <leader>yc :let @+=@"<CR>
 " ===============================================================================
 " Terminal
 " Open terminal with or without prefix with leader t
-nnoremap <silent><leader>t :BufTermToggle<CR>
-nnoremap <silent><C-t> :BufTermToggle<CR>
-tnoremap <silent><C-\><C-t> <C-\><C-n>:BufTermToggle<CR>
-nnoremap <silent><C-\><C-t> :BufTermToggle<CR>
+nnoremap <silent><leader>t :<c-u>exe v:count1 . "ToggleTerm"<CR>
 
 " ==============================================================================
 " Terminal Execs

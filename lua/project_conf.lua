@@ -35,7 +35,7 @@ function M.exec_command(name)
       return
     end
 
-    local full_command = {}
+    local full_command = {"clear\n"}
     for v in command:gmatch("%S+") do
         full_command[#full_command+1] = vim.fn.expand(v)
     end
@@ -43,7 +43,7 @@ function M.exec_command(name)
     local command = table.concat(full_command, ' ')
 
     vim.cmd(":wa")
-    vim.cmd("BufTermExec " .. command)
+    require'toggleterm'.exec(command, 1)
 end
 
 function M.overview()
