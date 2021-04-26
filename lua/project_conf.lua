@@ -7,12 +7,13 @@ local commands = {}
 function M.load()
     local env = {}
 
-  if not io.open("conf.lua") then
+  if not io.open("project.lua") then
         -- print("No config found")
         config = {}
         return
     end
 
+    print("Loading project.lua")
     local chunk,err = loadfile("project.lua", 't', env)
 
     if err then
@@ -92,8 +93,7 @@ function M.load_for_ft()
         return false
     end
 
-    -- Load and clear commands
-    commands = {}
+    -- Load and commands
     for k,v in pairs(ft_command) do
         commands[k] = v
     end
