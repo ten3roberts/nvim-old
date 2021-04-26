@@ -3,12 +3,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'AndrewRadev/sideways.vim' " Move function arguments
 Plug 'airblade/vim-gitgutter' " Show git info in gutter
 Plug 'airblade/vim-rooter' " Autocd to project root
+Plug 'akinsho/nvim-toggleterm.lua' " Toggleable terminals
 Plug 'dkarter/bullets.vim'
 Plug 'drmikehenry/vim-headerguard' "Add header guards to C files
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview in browser
-Plug 'akinsho/nvim-toggleterm.lua' " Toggleable terminals
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy searching and finding
 Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
 Plug 'junegunn/goyo.vim'
@@ -35,6 +35,7 @@ Plug 'tpope/vim-eunuch' " Unix commands like renaming and moving current file
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround' " Surround with delimiters
+Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
 
 Plug 'hrsh7th/nvim-compe'
