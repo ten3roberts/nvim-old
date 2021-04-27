@@ -26,6 +26,10 @@ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.6 } }
 
 " Favor files closer to current file
 function! s:list_cmd()
+  if (!empty(&buftype))
+    return 'fd -t f'
+  endif
+
   let base = fnamemodify(expand('%'), ':h:.:S')
   return base == '.' ? 'fd -t f' : printf('fd -t f | proximity-sort %s', expand('%'))
 endfunction
