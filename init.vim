@@ -11,11 +11,11 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview in browser
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy searching and finding
 Plug 'junegunn/fzf.vim' " Fuzzy finding vim commands
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align' " Align text
 Plug 'justinmk/vim-sneak' " Like t and f but accepts two characters
 Plug 'kyazdani42/nvim-tree.lua' " Tree file explorer plugin
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'psliwka/vim-smoothie' " Smooth scrolling
@@ -24,7 +24,7 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'rhysd/git-messenger.vim' " Blame current line
 Plug 'romainl/vim-qf'
 Plug 'romgrk/barbar.nvim'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Colorize color codes (required Go)
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Colorize color codes (requires Go)
 Plug 'sbdchd/neoformat' " File formatting
 Plug 'ten3roberts/nim.vim'
 Plug 'tikhomirov/vim-glsl' " glsl file support

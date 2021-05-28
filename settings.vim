@@ -54,7 +54,7 @@ function! MyFoldText() " {{{
 endfunction " }}}
 set foldtext=MyFoldText()
 
-set foldnestmax=4
+set foldnestmax=3
 set foldlevel=10
 " set nofoldenable
 set scrolloff=5
@@ -114,7 +114,7 @@ let g:pear_tree_map_special_keys = 1
 " imap <CR> <Plug>(PearTreeExpand)
 " imap <Esc> <Plug>(PearTreeFinishExpansion)
 
-let g:rooter_patterns = ['.git', '.hg', '.bzr', '.svn', 'project.lua']
+let g:rooter_patterns = ['.git', '.hg', '.bzr', '.svn']
 
 " LSP signs
 sign define LspDiagnosticsSignError text=●  texthl=LspDiagnosticsSignError linehl= numhl=
@@ -129,7 +129,7 @@ let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
 let g:nvim_tree_auto_ignore_ft = [ 'startify' ]
 let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
 let g:nvim_tree_auto_close = 0 "0 by default, closes the tree when it's the last window
-let g:nvim_tree_quit_on_open = 0 "0 by default, closes the tree when you open a file
+let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
 let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
 let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
 let g:nvim_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
@@ -142,7 +142,7 @@ let g:nvim_tree_hijack_netrw = 1 "1 by default, prevents netrw from automaticall
 let g:nvim_tree_show_icons = {
       \ 'git': 0,
       \ 'folders': 1,
-      \ 'files': 0,
+      \ 'files': 1,
       \ }
 "If 0, do not show the icons for one of 'git' 'folder' and 'files'
 "1 by default, notice that if 'files' is 1, it will only display
@@ -207,9 +207,9 @@ let bufferline.clickable = v:true
 " Enable/disable icons
 " if set to 'numbers', will show buffer index in the tabline
 " if set to 'both', will show buffer index and icons in the tabline
-let bufferline.icons = v:false
+let bufferline.icons = v:true
 
 " Sets the maximum padding width with which to surround each tab
-let bufferline.maximum_padding = 2
+let bufferline.maximum_padding = 4
 
 let g:qf_loclist_window_bottom = 0

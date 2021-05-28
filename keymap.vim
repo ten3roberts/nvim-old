@@ -11,7 +11,7 @@ noremap <silent> k gk
 " noremap <silent> <C-u> {
 " noremap <silent> <C-d> }
 
-" Sentence navigation with C-jk
+" Paragraph navigation with C-jk
 noremap <silent> <C-j> }
 noremap <silent> <C-k> {
 
@@ -24,6 +24,23 @@ noremap <C-b> 0
 
 " Window only but keep tree
 " nmap <C-w>o :wincmd o \| :NvimTreeOpen<CR>
+
+" Window mappings
+nmap <leader>wo <C-w>o
+
+nmap <leader>wq <C-w>q
+nmap <leader>wp <C-w>p
+
+nmap <leader>wH <C-w>H
+nmap <leader>wJ <C-w>J
+nmap <leader>wK <C-w>K
+nmap <leader>wL <C-w>L
+
+nmap <leader>wh <C-w>h
+nmap <leader>wj <C-w>j
+nmap <leader>wk <C-w>k
+nmap <leader>wl <C-w>l
+
 
 " Select all text
 nnoremap vA ggVG
@@ -63,7 +80,7 @@ vnoremap <A-j> :m '>+1<CR>gv
 vnoremap <A-k> :m '<-2<CR>gv
 
 " Clear last used search pattern
-map <silent><Esc> <Plug>(searchhi-clear-all)
+nmap <silent><Esc> <Plug>(searchhi-clear-all)
 
 command! Cd cd %:p:h
 
@@ -129,7 +146,7 @@ nnoremap <silent>    <A-9> :BufferLast<CR>
 nnoremap <silent>    <A-c> :BufferClose<CR>
 nnoremap <silent>    <leader>bk :BufferClose<CR>
 nnoremap <silent>    <leader>bo :BufferCloseAllButCurrent<CR>
-nnoremap <silent>    <leader>bp :bp<CR>
+nnoremap <silent>    <leader>bp <C-^>
 
 " Wipeout buffer
 "                          :BufferWipeout<CR>
@@ -159,6 +176,7 @@ nnoremap gF gf
 
 " Prevent x from touching the registers
 noremap x "_x
+
 " Copy top of reg to clipboard
 noremap <leader>yc :let @+=@"<CR>
 
@@ -208,7 +226,6 @@ nnoremap <leader>hn         :GitGutterNextHunk<CR>
 " FZF
 noremap <leader><leader> :call FZFOpen(':Files')<CR>
 noremap <leader>,        :call FZFOpen(':Buffers')<CR>
-noremap <C-p>            :call FZFOpen(':Buffers')<CR>
 noremap <leader>rg       :call FZFOpen(':Rg')<CR>
 " noremap <C-k><C-t>       :Colors<CR>
 noremap <leader>gl       :call FZFOpen(':Commits')<CR>

@@ -202,8 +202,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(on_publish_di
 {
   -- Enable underline, use default values
   underline = true,
-  -- Enable virtual text, override spacing to 2
-  virtual_text = false,
+  -- Enable virtual text, override spacing to 4
+  virtual_text = {
+    spacing = 4,
+  },
 
   signs = true,
 
