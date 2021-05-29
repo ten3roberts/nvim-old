@@ -155,7 +155,11 @@ end
 
 local function custom_attach(client)
   print("LSP started")
-  require'lsp_signature'.on_attach()
+  require'lsp_signature'.on_attach({
+    handler_opts = {
+      border = "single"   -- double, single, shadow, none
+    },
+  })
 
   map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
   map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
@@ -175,6 +179,9 @@ local function custom_attach(client)
   -- map('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
   -- map("n", "<leader>ai", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
   -- map("n", "<leader>ao", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
+
+  vim.cmd("SymbolsOutlineOpen")
+
 end
 
 

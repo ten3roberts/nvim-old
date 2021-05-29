@@ -39,14 +39,15 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim' " Improves text targets like delimiters and ,
 
 Plug 'hrsh7th/nvim-compe'
+Plug 'simrat39/symbols-outline.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/lsp_signature.nvim'
-Plug 'romgrk/nvim-treesitter-context'
 
 " Color schemes
 Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'cocopon/iceberg.vim'
 Plug 'sainnhe/sonokai'
 
 call plug#end()

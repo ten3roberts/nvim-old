@@ -58,7 +58,7 @@ set foldnestmax=3
 set foldlevel=10
 " set nofoldenable
 set scrolloff=5
-set updatetime=1000
+set updatetime=500
 
 set path+=**
 

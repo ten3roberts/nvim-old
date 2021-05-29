@@ -16,6 +16,8 @@ au BufRead,BufNewFile *.h,*.c set filetype=c
 " Fugitive tab expand and collapse
 au FileType fugitive map <buffer> <Tab> =
 
+au Filetype Outline set winfixwidth
+
 " Auto set compiler for filetypes
 au FileType rust :compiler! cargo
 

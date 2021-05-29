@@ -15,7 +15,7 @@ require'nvim-treesitter.configs'.setup {
 -- Setup completion
 require 'completion'
 require"toggleterm".setup{
-  size = 80,
+  size = 12,
   open_mapping = [[<C-t>]],
   hide_numbers = true, -- hide the number column in toggleterm buffers
   shade_filetypes = {},
@@ -23,7 +23,7 @@ require"toggleterm".setup{
   shading_factor = 1, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
   start_in_insert = true,
   persist_size = false,
-  direction = 'vertical', -- vertical' | 'horizontal' | 'window' | 'float',
+  direction = 'window', -- vertical' | 'horizontal' | 'window' | 'float',
   float_opts = {
     -- The border key is *almost* the same as 'nvim_win_open'
     -- see :h nvim_win_open for details on borders however
